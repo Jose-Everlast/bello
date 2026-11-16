@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "texts": {
+    "hero.kicker": "BELLO · APERITIVO BAR · GÖTTINGEN",
+    "hero.text": "Italien im Glas. Göttingen im Herzen.",
+    "visit.hours1": "Di–Sa 14:30–00:00"
+  },
+  "menu": [
+    {
+      "id": "snacks",
+      "label": "Snacks",
+      "sections": [
+        {
+          "id": "mangiare",
+          "title": "Mangiare",
+          "subtitle": "Kleinigkeiten zum Teilen",
+          "items": [
+            { "id": "aperitivo-platte", "name": "Aperitivo-Platte", "price": "5 €", "text": "Kichererbsencreme · Focaccia · Oliven · Tagesspezial", "note": "Aperitivo wie in Italien.", "hidden": false },
+            { "id": "polpette-al-sugo", "name": "Polpette al Sugo", "price": "10 €", "text": "Hackfleischbällchen mit Tomatensoße", "note": "", "hidden": false },
+            { "id": "torta-della-nonna", "name": "Torta della Nonna", "price": "5,50 €", "text": "Zitronencreme-Tarte mit Pinienkernen", "note": "", "hidden": false }
+          ]
+        },
+        {
+          "id": "focaccia",
+          "title": "Focaccia",
+          "subtitle": "Eigenes Rezept",
+          "items": [
+            { "id": "mortadella-provolone", "name": "Mortadella & Provolone", "price": "9 €", "text": "Mortadella · Provolone · Senf", "note": "", "hidden": false }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cocktails",
+      "label": "Cocktails",
+      "sections": [
+        {
+          "id": "negronis",
+          "title": "Negronis",
+          "subtitle": "",
+          "items": [
+            { "id": "negroni", "name": "Negroni", "price": "11 €", "text": "Gin · Campari · Vermouth", "note": "", "hidden": false },
+            { "id": "negroni-sbagliato", "name": "Negroni Sbagliato", "price": "10 €", "text": "Campari · Vermouth · Prosecco", "note": "", "hidden": true }
+          ]
+        }
+      ]
+    }
+  ],
+  "specials": [
+    { "id": "sp-aperitivo-stunde", "title": "Aperitivo-Stunde", "text": "Jeden Abend bis 19 Uhr.", "image": null, "imageAlt": "", "from": "2026-11-01", "until": "2026-12-31" }
+  ]
+}

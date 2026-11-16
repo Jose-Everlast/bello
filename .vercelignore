@@ -1,2 +1,6 @@
+# Not uploaded to Vercel at all (neither served nor available to the functions).
+# Do NOT add lib, api, package.json or package-lock.json here: the /api functions need them.
 docs
 tools
+tests
+README.txt

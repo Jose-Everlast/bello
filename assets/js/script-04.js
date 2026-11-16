@@ -22,6 +22,8 @@
   ];
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
+  // Reduced motion: the route is shown finished and the section is one screen high (see CSS), so do not promise a scroll animation.
+  if(reduced){const deck=section.querySelector('.bm-deck');if(deck)deck.textContent='Vom Kornmarkt bis zum ersten Aperitivo sind es nur ein paar Schritte.'}
   function render(){
     raf=0;
     const sticky=section.querySelector('.bm-sticky');

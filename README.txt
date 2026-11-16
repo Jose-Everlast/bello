@@ -1,10 +1,24 @@
-BELLO – Website-Export
+BELLO – aperitivo bar, Kurze Str. 6A, 37073 Göttingen
+Website (eine Seite, reines HTML/CSS/JS, kein Build-Schritt)
 
-Öffnen: index.html
+Live: https://bello-lyart.vercel.app/ (Vercel, aus dem GitHub-Repo, Branch master)
+Lokal ansehen: im Projektordner "python -m http.server 8765" starten und http://127.0.0.1:8765/ öffnen.
+
 Dateien:
 - index.html
 - assets/css/styles.css
-- assets/js/*.js
-- assets/images/* (alle eingebetteten Motive und die im Projekt vorhandenen Originalbilder)
+- assets/js/script-01.js  Mobiles Menü
+- assets/js/script-03.js  Hero (Negroni-Animation beim Scrollen)
+- assets/js/script-04.js  Weg vom Kornmarkt (Karte)
+- assets/js/script-08.js  Video-Karussell
+- assets/js/script-09.js  Karte (Tabs)
+- assets/images/*         Hero-Ebenen, Poster, favicon.svg
+- assets/video/bello-info.mp4  Info-Clip (erzeugt mit tools/make_info_video.py)
 
-Hinweis: Instagram-Reels/Videodateien und externe Unsplash-Hintergründe werden in dieser Fassung weiterhin online geladen; sie liegen nicht lokal im ZIP. Externe Fonts, Maps und Links benötigen ebenfalls Internet. Die Tischanfrage bleibt eine Demo.
+Extern geladen (brauchen Internet):
+- Schriften von Google Fonts
+- die zwei Instagram-Reels samt Vorschaubildern über einen val.run-Proxy
+- Links zu Instagram und Google Maps
+
+"Platz anfragen" führt zum Instagram-Profil @bello.aperitivobar; ein Buchungsformular gibt es nicht.
+Impressum und Datenschutzerklärung fehlen noch.

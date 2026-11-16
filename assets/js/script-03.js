@@ -1,4 +1,4 @@
-window.__BELLO_CANONICAL_ASSETS__={"base":"assets/images/embedded-01.webp","glass":"assets/images/embedded-02.webp","ice":"assets/images/embedded-03.webp","liquid":"assets/images/embedded-04.webp","orange":"assets/images/embedded-05.webp","original":"assets/images/embedded-06.webp","cube1":"assets/images/embedded-07.webp","cube2":"assets/images/embedded-08.webp","cube3":"assets/images/embedded-09.webp"};
+window.__BELLO_CANONICAL_ASSETS__={"glass":"assets/images/embedded-02.webp","liquid":"assets/images/embedded-04.webp","orange":"assets/images/embedded-05.webp","cube1":"assets/images/embedded-07.webp","cube2":"assets/images/embedded-08.webp","cube3":"assets/images/embedded-09.webp"};
 
 (()=>{
 'use strict';
@@ -14,7 +14,7 @@ const labelEl=titleEl.parentElement;
 const scene=canvas.parentElement;
 const steps=[...document.querySelectorAll('#hero-scroll [data-step]')];
 const cue=document.getElementById('scroll-cue');
-const info=[['01 / GLAS','Der Anfang.'],['02 / EIS','Klar. Kalt. Kristall.'],['03 / NEGRONI','Bitter. Stark. Italienisch.'],['04 / ORANGE','Der letzte Schliff.']];
+const info=[['01 / GLAS','Alles beginnt mit dem Glas.'],['02 / EIS','Klar. Kalt. Kristall.'],['03 / NEGRONI','Bitter. Stark. Italienisch.'],['04 / ORANGE','Der letzte Schliff.']];
 const sources=window.__BELLO_CANONICAL_ASSETS__;
 const assets={};
 const sourceW=709,sourceH=411;
@@ -36,7 +36,9 @@ const cubes=[
   {name:'cube3',cx:323,cy:292,from:.16,to:.265,height:70,spin:-.3}
 ];
 const HORIZON=306, POUR_X=388, POUR_FROM=.405, POUR_TO=.83;
-function scrollProgress(){if(reduced.matches)return 1;const top=section.getBoundingClientRect().top;const range=Math.max(1,section.offsetHeight-sticky.clientHeight);return clamp(-top/range)}
+// The sticky scene is pinned below the header (CSS top:72/76px), so the pinned phase runs from
+// section top = start down to off-range. Progress is 0..1 over exactly that phase.
+function scrollProgress(){if(reduced.matches)return 1;const top=section.getBoundingClientRect().top;const off=parseFloat(getComputedStyle(sticky).top)||0;const range=section.offsetHeight-sticky.offsetHeight;const start=Math.min(off,top+(window.scrollY||0));return clamp((start-top)/Math.max(1,start-(off-range)))}
 function fit(){const r=canvas.getBoundingClientRect();const ratio=Math.min(devicePixelRatio||1,r.width<700?1.4:1.7);const w=Math.max(1,Math.round(r.width*ratio)),h=Math.max(1,Math.round(r.height*ratio));if(w!==sizeW||h!==sizeH){sizeW=w;sizeH=h;pxratio=ratio;canvas.width=w;canvas.height=h;return true}return false}
 function setStageText(){titleEl.textContent=info[stage][0];subtitleEl.textContent=info[stage][1];labelEl.classList.remove('swap')}
 function updateUi(p){
