@@ -1184,3 +1184,37 @@ button,a { -webkit-tap-highlight-color:transparent }
 .brm-source{margin-left:0}.brm-page{flex-basis:min(86vw,425px);min-height:580px}
 }
 @media(max-width:390px){.brj-bottom,.brm-bottom{letter-spacing:.08em;font-size:10px}}
+
+
+/* Hero stage label: short cross-fade when the step changes. */
+#hero-scroll .photo-stage-label span{transition:opacity .17s ease,transform .17s ease}
+#hero-scroll .photo-stage-label.swap span{opacity:0;transform:translateY(6px)}
+
+/* Hero toast: appears beside the finished drink, driven by --cheers (0..1) from the scroll script. */
+#hero-scroll .hero-toast{position:absolute;z-index:3;left:66%;top:50%;margin:0;pointer-events:none;color:#fff7ed;font:500 clamp(34px,3.5vw,60px)/1 var(--serif,Georgia,serif);letter-spacing:-.045em;white-space:nowrap;text-shadow:0 2px 24px rgba(0,0,0,.55);opacity:var(--cheers,0);transform:translateY(calc((1 - var(--cheers,0))*14px))}
+#hero-scroll .hero-toast em{color:#f0a77d;font-style:italic;font-weight:500}
+#hero-scroll .hero-toast i{display:block;width:38px;height:1px;margin-bottom:16px;background:#ed9469;transform-origin:0 50%;transform:scaleX(var(--cheers,0))}
+@media(max-width:760px){
+  #hero-scroll .hero-toast{left:auto;right:18px;top:auto;bottom:106px;font-size:34px;text-align:right}
+  #hero-scroll .hero-toast i{margin:0 0 10px auto;width:28px;transform-origin:100% 50%}
+  #hero-scroll .photo-stage-label{opacity:calc(1 - var(--cheers,0))}
+}
+
+/* TRIAL: Bello colour concept in the hero. Signal red, red-white stripes, yellow accent. */
+#hero-scroll{background:#b81a13}
+#hero-scroll .hero-scene{background:#e0261c}
+#hero-scroll .hero-vignette{background:linear-gradient(90deg,rgba(92,8,5,.5),rgba(92,8,5,.16) 42%,rgba(92,8,5,0) 68%),linear-gradient(180deg,rgba(40,4,3,.18),transparent 30%)}
+#hero-scroll .hero-awning{position:absolute;z-index:2;left:0;right:0;top:0;height:clamp(104px,15svh,150px);pointer-events:none;background:repeating-linear-gradient(90deg,#e0261c 0 34px,#fff6e8 34px 68px);box-shadow:0 10px 26px rgba(60,5,3,.34)}
+#hero-scroll .photo-copy h1 em,#hero-scroll .hero-toast em{color:#ffd84a}
+#hero-scroll .photo-copy p{color:#fff6ea}
+#hero-scroll .live-dot{background:#ffd84a;box-shadow:0 0 0 5px rgba(255,216,74,.2)}
+#hero-scroll .hero-actions .btn-primary{background:#fff6e8;color:#c81e17;box-shadow:0 14px 30px rgba(70,6,4,.28)}
+#hero-scroll .btn-on-dark{border-color:rgba(255,246,232,.75);background:rgba(120,12,8,.25)}
+#hero-scroll #mix-progress,#hero-scroll .hero-toast i{background:#ffd84a}
+#hero-scroll .hero-progress-steps .active{color:#ffd84a}
+#hero-scroll #stage-subtitle{color:#ffe3d6}
+.mover-bar{background:#e0261c;border-top-color:#f2685c;border-bottom-color:#a5170f;color:#fff6e8}
+@media(max-width:760px){
+  #hero-scroll .hero-vignette{background:linear-gradient(180deg,rgba(92,8,5,.34),rgba(92,8,5,.2) 36%,rgba(92,8,5,0) 58%)}
+  #hero-scroll .hero-awning{height:clamp(92px,13svh,120px);background:repeating-linear-gradient(90deg,#e0261c 0 22px,#fff6e8 22px 44px)}
+}
