@@ -22,10 +22,12 @@ Befehle im Chat: `JA`, `NEIN`, `RÜCKGÄNGIG`, `STATUS` (offener Entwurf, ausgeb
 
 `Jose-Everlast/bello` war bei der Prüfung am 16.11.2026 ohne Anmeldung lesbar, also öffentlich. In ein öffentliches Repo darf der Zustand nicht. Der Code prüft das selbst: Vor dem ersten Schreiben fragt er `GET /repos/<Repo>` ab und schreibt nur, wenn GitHub `"private": true` meldet. Sonst wird nichts geschrieben, der Bot antwortet „Da ist technisch etwas schiefgegangen“, und im Log steht `handle_error` mit `"name":"StateRepoPublicError"`.
 
-Eine der beiden Möglichkeiten einrichten, bevor irgendetwas anderes passiert:
+**Stand 16.11.2026:** Das private Repo `Jose-Everlast/bello-state` ist angelegt (mit README, Standard-Branch `main`). Es fehlt nur noch der Eintrag in Vercel:
 
-1. **Empfohlen: eigenes privates Repo nur für den Zustand.** Auf GitHub ein neues Repo anlegen, z. B. `Jose-Everlast/bello-state`, Sichtbarkeit **Private**, mit Haken bei „Add a README file“ (ein leeres Repo ohne Commit funktioniert nicht). In Vercel `GITHUB_STATE_REPO` auf `Jose-Everlast/bello-state` setzen. Veröffentlicht wird weiter nach `GITHUB_REPO`; die Website bleibt, wo sie ist. Das GitHub-Token braucht Zugriff auf beide Repos (Abschnitt 3).
-2. **Oder das Website-Repo privat stellen** (GitHub > Repo > Settings > General > Danger Zone > Change visibility). Dann `GITHUB_STATE_REPO` weglassen. Zu beachten: Vercel baut bei privaten Repos im Hobby-Tarif nur Commits von Autoren, die zum Vercel-Konto gehören (siehe Abschnitt 3, UNGEPRÜFT für dieses Projekt).
+1. In Vercel `GITHUB_STATE_REPO` auf `Jose-Everlast/bello-state` setzen (Abschnitt 5). Veröffentlicht wird weiter nach `GITHUB_REPO`; die Website bleibt, wo sie ist.
+2. Das GitHub-Token braucht Zugriff auf beide Repos, `bello` und `bello-state` (Abschnitt 3).
+
+Das Website-Repo privat zu stellen ist keine Alternative, solange das Vercel-Projekt im Hobby-Tarif läuft: Am 16.11.2026 ausprobiert, Vercel blockiert dann jeden Build mit „Git author … must have access to the project on Vercel to create deployments“. Das träfe auch die Commits des Bots.
 
 Der Vorschau-Link gehört nicht in fremde Hände: Wer den Link hat, sieht den Entwurf, bis er veröffentlicht, verworfen oder abgelaufen ist.
 
