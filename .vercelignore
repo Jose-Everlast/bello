@@ -1,5 +1,7 @@
-# Not uploaded to Vercel at all (neither served nor available to the functions).
-# Do NOT add lib, api, package.json or package-lock.json here: the /api functions need them.
+# Not uploaded to Vercel at all (not needed by the site or by the functions).
+# Only public/ is served; these entries just keep the upload small.
+# Do NOT add lib, api, public, package.json or package-lock.json here:
+# the /api functions need lib and the package files, the site is public/.
 docs
 tools
 tests

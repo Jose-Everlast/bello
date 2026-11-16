@@ -27,7 +27,7 @@ function fakeGithub({ withStateBranch = false, repo = 'o/r', isPrivate = true, d
     commits.set(id, { tree: treeSha, message });
     return id;
   };
-  const master = new Map(withContent ? [['data/content.json', Buffer.from(JSON.stringify(fixtureContent()))]] : [['README.md', Buffer.from('x')]]);
+  const master = new Map(withContent ? [['public/data/content.json', Buffer.from(JSON.stringify(fixtureContent()))]] : [['README.md', Buffer.from('x')]]);
   branches.set(defaultBranch, { head: snapshot(master, 'init'), files: master });
   if (withStateBranch) branches.set('wa-state', { head: snapshot(new Map(), 'state init'), files: new Map() });
   const hooks = { beforeRefPatch: null, beforePut: null };
@@ -173,7 +173,7 @@ test('github store: GITHUB_STATE_REPO keeps state in a separate private repo whi
   const next = fixtureContent();
   next.texts['hero.text'] = 'Neu';
   assert.equal((await store.publish({ content: next, images: [], message: 'Inhalt' })).changed, true);
-  assert.deepEqual(JSON.parse(siteGh.branches.get('master').files.get('data/content.json').toString()), next);
+  assert.deepEqual(JSON.parse(siteGh.branches.get('master').files.get('public/data/content.json').toString()), next);
   assert.equal(stateGh.log.some((c) => c.path.startsWith('/git/')  && c.method !== 'GET' && c.path !== '/git/refs'), false, 'no publish in the state repo');
   assert.throws(() => createGithubStore({ token: 'x', repo: 'o/r', stateRepo: 'kaputt' }), /GITHUB_STATE_REPO/);
 });
@@ -215,7 +215,7 @@ test('github store: publish is exactly one commit on master with content and ima
   assert.equal(gh.commits.get(master.head).parent, headBefore, 'one commit on top of the old head');
   assert.equal(gh.commits.get(master.head).message, 'Inhalt per WhatsApp');
   assert.deepEqual(await store.getPublished(), next);
-  assert.deepEqual(master.files.get('assets/uploads/foto-1.webp'), image);
+  assert.deepEqual(master.files.get('public/assets/uploads/foto-1.webp'), image);
   assert.equal(gh.log.filter((c) => c.method === 'PATCH').length, 1);
   assert.equal(gh.log.some((c) => c.method === 'PUT'), false, 'no per-file commits on master');
 
@@ -243,7 +243,7 @@ test('github store: publish rebuilds on the new head when master moved in betwee
   assert.deepEqual(await store.getPublished(), next);
 });
 
-test('github store: publish refuses when data/content.json at the head is not what the caller expects (F5)', async () => {
+test('github store: publish refuses when public/data/content.json at the head is not what the caller expects (F5)', async () => {
   const gh = fakeGithub();
   const store = makeStore(gh);
   const expected = fixtureContent();
@@ -256,7 +256,7 @@ test('github store: publish refuses when data/content.json at the head is not wh
   const pushContent = (content) => {
     const master = gh.branches.get('master');
     const files = new Map(master.files);
-    files.set('data/content.json', Buffer.from(JSON.stringify(content)));
+    files.set('public/data/content.json', Buffer.from(JSON.stringify(content)));
     const treeSha = sha(`tree:${JSON.stringify(content)}`);
     gh.trees.set(treeSha, files);
     const pushed = sha(`push:${JSON.stringify(content)}`);

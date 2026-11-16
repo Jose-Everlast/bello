@@ -35,12 +35,12 @@ const NUMBER = '491700000000';
 const SITE_URL = (process.env.SITE_URL || 'http://127.0.0.1:8765').replace(/\/+$/, '');
 
 async function loadContent() {
-  for (const path of ['data/content.json', 'tests/fixtures/content.json']) {
+  for (const path of ['public/data/content.json', 'tests/fixtures/content.json']) {
     try {
       return { content: JSON.parse(await readFile(new URL(path, ROOT), 'utf8')), path };
     } catch { /* try the next one */ }
   }
-  throw new Error('Weder data/content.json noch tests/fixtures/content.json gefunden.');
+  throw new Error('Weder public/data/content.json noch tests/fixtures/content.json gefunden.');
 }
 
 // --- keyword stand-in for the model (only used without ANTHROPIC_API_KEY) ---

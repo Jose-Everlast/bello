@@ -32,7 +32,7 @@ test('edit -> preview -> JA publishes one commit', async () => {
   assert.ok(yes.reply.includes(`${SITE}/`));
   assert.equal(await negroniPrice(h), '12 €');
   assert.equal(h.store.commits.length, 1);
-  assert.deepEqual(h.store.commits[0].paths, ['data/content.json']);
+  assert.deepEqual(h.store.commits[0].paths, ['public/data/content.json']);
   assert.equal(h.state().draft, null);
   assert.equal(h.state().history.length, 1);
   assert.equal(h.model.calls.length, 1, 'JA does not call the model');
@@ -240,8 +240,8 @@ test('photo without caption: asks what it is for; the next text creates the spec
   assert.equal(image.body.toString(), 'webp:jpegdata');
 
   await h.say('ja');
-  assert.deepEqual(h.store.commits[0].paths, ['data/content.json', path], 'content and image in one commit');
-  assert.equal(h.store.files.get(path).toString(), 'webp:jpegdata');
+  assert.deepEqual(h.store.commits[0].paths, ['public/data/content.json', `public/${path}`], 'content and image in one commit, under public/ in the repo');
+  assert.equal(h.store.files.get(`public/${path}`).toString(), 'webp:jpegdata');
   assert.equal(h.store.drafts.size, 0, 'draft image removed after publishing');
   const special = (await h.store.getPublished()).specials[1];
   assert.equal(special.image, path);

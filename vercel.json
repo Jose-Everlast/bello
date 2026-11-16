@@ -1,6 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
+  "outputDirectory": "public",
   "git": {
     "deploymentEnabled": {
       "wa-state": false
@@ -11,13 +12,12 @@
       "maxDuration": 60
     }
   },
-  "routes": [
-    { "src": "/(lib|tests|tools|docs|node_modules)(/.*)?", "status": 404 },
-    { "src": "/(package\\.json|package-lock\\.json|vercel\\.json|README\\.txt)", "status": 404 },
+  "headers": [
     {
-      "src": "/data/(.*)",
-      "headers": { "Cache-Control": "public, max-age=0, must-revalidate" },
-      "continue": true
+      "source": "/data/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+      ]
     }
   ]
 }
