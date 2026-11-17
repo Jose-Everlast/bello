@@ -40,7 +40,10 @@ const HORIZON=306, POUR_X=388, POUR_FROM=.405, POUR_TO=.83;
 // section top = start down to off-range. Progress is 0..1 over exactly that phase.
 function scrollProgress(){if(reduced.matches)return 1;const top=section.getBoundingClientRect().top;const off=parseFloat(getComputedStyle(sticky).top)||0;const range=section.offsetHeight-sticky.offsetHeight;const start=Math.min(off,top+(window.scrollY||0));return clamp((start-top)/Math.max(1,start-(off-range)))}
 function fit(){const r=canvas.getBoundingClientRect();const ratio=Math.min(devicePixelRatio||1,r.width<700?1.4:1.7);const w=Math.max(1,Math.round(r.width*ratio)),h=Math.max(1,Math.round(r.height*ratio));if(w!==sizeW||h!==sizeH){sizeW=w;sizeH=h;pxratio=ratio;canvas.width=w;canvas.height=h;return true}return false}
-function setStageText(){titleEl.textContent=info[stage][0];subtitleEl.textContent=info[stage][1];labelEl.classList.remove('swap')}
+// Wording comes from data/content.json once assets/js/content.js has loaded it (keys hero.stage1.title … hero.stage4.text); info[] is the fallback.
+const stageText=(part,i)=>{const t=window.BELLO_TEXTS,v=t&&t['hero.stage'+(stage+1)+'.'+part];return typeof v==='string'&&v.trim()?v:info[stage][i]};
+function setStageText(){titleEl.textContent=stageText('title',0);subtitleEl.textContent=stageText('text',1);labelEl.classList.remove('swap')}
+document.addEventListener('bello:texts',()=>{if(stage>=0)setStageText()});
 function updateUi(p){
   progressEl.style.transform=`scaleX(${p.toFixed(5)})`;
   percentEl.textContent=String(Math.round(p*100)).padStart(2,'0')+' / 100';

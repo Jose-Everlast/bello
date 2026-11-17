@@ -19,6 +19,7 @@ export function op(partial) {
   return {
     op: '', id: '', parent_id: '', after_id: '', position: 'end', fields: [], name: '', price: '', text: '',
     note: '', title: '', subtitle: '', hidden: false, photo: 'keep', image_alt: '', from: '', until: '',
+    key: '', factor: 1, scale: 1,
     ...partial,
   };
 }

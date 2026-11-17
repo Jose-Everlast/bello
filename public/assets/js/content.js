@@ -1,4 +1,4 @@
-// Editable content: menu, specials and a few texts come from data/content.json.
+// Editable content: menu, specials, the page texts and their sizes come from data/content.json.
 // With ?vorschau=<token> the unpublished draft is loaded from /api/vorschau instead.
 // The static markup in index.html is the fallback: if loading fails, nothing is touched.
 // All values are plain text and are written with textContent only.
@@ -47,6 +47,7 @@
     }
     if(content.texts!==undefined&&!isObject(content.texts))throw new Error('bad texts');
     if(content.specials!==undefined&&!Array.isArray(content.specials))throw new Error('bad specials');
+    if(content.styles!==undefined&&!isObject(content.styles))throw new Error('bad styles');
     return content;
   }
 
@@ -90,7 +91,91 @@
       const value=parts.join(' · ')+(node.getAttribute('data-text-end')||'');
       if(node.textContent!==value)node.textContent=value;
     }
+    // Texts that a script switches in place (hero stages, walk steps) are read from here.
+    window.BELLO_TEXTS=texts;
+    document.dispatchEvent(new Event('bello:texts'));
   }
+
+  /* ---------- Text sizes ---------- */
+  // content.styles maps a text key or one of these groups to { scale }: a multiplier
+  // of the size the stylesheet gives that element (1 = unchanged, not stored).
+  const GROUPS={
+    'menu.tab':'.brm-tabs [role="tab"]',
+    'menu.section.title':'.brm-page-title h3',
+    'menu.section.subtitle':'.brm-page-title p',
+    'menu.item.name':'.brm-page li>b',
+    'menu.item.price':'.brm-page li>b>em',
+    'menu.item.text':'.brm-page li>span',
+    'menu.item.note':'.brm-page li>i',
+    'special.title':'.bsp-card h3',
+    'special.text':'.bsp-card p',
+    'concept.card1.text':'.brj-caption p[data-text-list]',
+    'hero.stage.title':'#stage-title',
+    'hero.stage.text':'#stage-subtitle',
+    'walk.step.title':'#bm-step-title',
+    'walk.step.text':'#bm-step-sub',
+  };
+  const TEXT_KEY=/^[a-z0-9]+(?:\.[a-z0-9]+)*$/;
+  const MIN_SCALE=.5,MAX_SCALE=3;
+  let scales=[];   // [selector, scale] for every size that differs from the stylesheet
+  let sized=[];    // elements that currently carry an inline font-size from here
+  let resizeTimer=0;
+
+  function applyStyles(){
+    for(const node of sized){
+      node.style.removeProperty('font-size');
+      if(!node.getAttribute('style'))node.removeAttribute('style');
+    }
+    sized=[];
+    if(!scales.length)return;
+    const wanted=new Map();
+    for(const [selector,scale] of scales){
+      for(const node of document.querySelectorAll(selector))wanted.set(node,scale);
+    }
+    if(!wanted.size)return;
+    // A keyed element inside a resized one keeps its own size: it is pinned to its
+    // stylesheet size (times its own scale), so nothing is scaled twice.
+    const inside=node=>{
+      for(let up=node.parentElement;up;up=up.parentElement)if(wanted.has(up))return true;
+      return false;
+    };
+    const known=['[data-text]',...Object.values(GROUPS)].join(',');
+    for(const node of document.querySelectorAll(known)){
+      if(!wanted.has(node)&&inside(node))wanted.set(node,1);
+    }
+    // Measure everything first (the stylesheet sizes, often clamp()), then write.
+    const jobs=[];
+    for(const [node,scale] of wanted){
+      const base=parseFloat(getComputedStyle(node).fontSize);
+      if(base>0)jobs.push([node,base*scale]);
+    }
+    for(const [node,size] of jobs){
+      // Only font-size is set: line-height stays what the stylesheet says, relative to it.
+      node.style.fontSize=size.toFixed(2)+'px';
+      sized.push(node);
+    }
+  }
+
+  function setStyles(styles){
+    scales=[];
+    if(isObject(styles)){
+      for(const key of Object.keys(styles)){
+        const entry=styles[key];
+        const scale=isObject(entry)?entry.scale:null;
+        if(typeof scale!=='number'||!isFinite(scale)||scale===1)continue;
+        const selector=Object.prototype.hasOwnProperty.call(GROUPS,key)?GROUPS[key]:TEXT_KEY.test(key)?'[data-text="'+key+'"]':'';
+        if(selector)scales.push([selector,Math.min(MAX_SCALE,Math.max(MIN_SCALE,scale))]);
+      }
+    }
+    applyStyles();
+  }
+
+  // The stylesheet sizes follow the window width, so the scaled sizes are redone after a resize.
+  window.addEventListener('resize',()=>{
+    if(!scales.length)return;
+    clearTimeout(resizeTimer);
+    resizeTimer=setTimeout(applyStyles,120);
+  },{passive:true});
 
   /* ---------- Menu ---------- */
   function buildPanel(tab,active){
@@ -99,7 +184,7 @@
     for(const sec of tab.sections){
       const page=el('article',null,{class:'brm-page'});
       const folio=el('div',null,{class:'brm-folio'});
-      folio.append(el('span','LA CARTA'),el('span',tab.label));
+      folio.append(el('span','LA CARTA',{'data-text':'menu.folio'}),el('span',tab.label));
       const title=el('div',null,{class:'brm-page-title'});
       title.append(el('h3',sec.title));
       if(sec.subtitle)title.append(el('p',sec.subtitle));
@@ -114,7 +199,7 @@
         ul.append(li);
       }
       const foot=el('div',null,{class:'brm-foot'});
-      foot.append(el('span','Preise in Euro inkl. MwSt.'),el('span','bello.'));
+      foot.append(el('span','Preise in Euro inkl. MwSt.',{'data-text':'menu.foot'}),el('span','bello.'));
       page.append(folio,title,ul,foot);
       panel.append(page);
     }
@@ -240,6 +325,8 @@
       ['Karte',()=>renderMenu(content.menu)],
       ['Texte',()=>applyTexts(content.texts)],
       ['Specials',()=>renderSpecials(content.specials,images,preview)],
+      // Last: sizes are measured on what the three parts above have put on the page.
+      ['Textgrößen',()=>setStyles(content.styles)],
     ];
     for(const [name,run] of parts){
       try{run();}catch(err){console.warn('Bello: '+name+' konnte nicht übernommen werden, dieser Teil zeigt den festen Stand.',err);}

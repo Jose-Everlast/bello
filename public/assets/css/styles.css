@@ -412,7 +412,7 @@ input,select{width:100%;border:1px solid rgba(23,23,23,.1);border-radius:18px;pa
  .bm-progress-track{margin:11px 0}
  .bm-stats b{font-size:21px}
  .bm-open{font-size:9px;max-width:215px}
- .bm-open span{display:none}
+ .bm-open span:not([data-text]){display:none}
 }
 @media(prefers-reduced-motion:reduce){.bm-progress-fill{transform:scaleX(1)}.bm-end{opacity:1}}
 
@@ -433,7 +433,7 @@ html{scroll-padding-top:70px}body{overflow-x:hidden;background:var(--b-paper)}
 .site-header .nav{gap:clamp(22px,3vw,52px)}.site-header .nav a{color:#e9dfd4;font-size:10px;letter-spacing:.16em;font-weight:700}
 .site-header .nav a:hover{color:#f08067}
 .nav-book{background:none;color:#eee6dc;border:0;border-bottom:1px solid #aaa09a;padding:12px 0;font-size:10px;letter-spacing:.13em;text-transform:uppercase;font-weight:800;white-space:nowrap}
-.nav-book span{color:#eb7554;font-size:17px;margin-left:18px}
+.nav-book span:not([data-text]){color:#eb7554;font-size:17px;margin-left:18px}
 .mobile-toggle{border:1px solid #7f7b75;border-radius:0;background:none;color:#f8efe3}
 /* Original scroll-hero retained. Header top defines sticky offset. */
 .hero-sticky{top:76px!important;height:calc(100svh - 76px)!important}
@@ -810,7 +810,7 @@ html{scroll-padding-top:70px}body{overflow-x:hidden;background:var(--b-paper)}
 #hero-scroll .hero-progress-steps{display:flex;justify-content:space-between;gap:10px;margin-top:11px;font-size:9px;letter-spacing:.16em;opacity:.8}
 #hero-scroll .hero-progress-steps .active{color:#ffb98b;opacity:1}
 #hero-scroll .scroll-cue{position:absolute;right:clamp(25px,4vw,76px);top:50%;transform:translateY(-50%);writing-mode:vertical-rl;display:flex;align-items:center;gap:18px;font-size:9px;letter-spacing:.3em;font-weight:800;color:rgba(255,245,235,.8);z-index:3;pointer-events:none}
-#hero-scroll .scroll-cue span{font-size:22px}
+#hero-scroll .scroll-cue span:not([data-text]){font-size:22px}
 @media(max-width:760px){
   #hero-scroll{height:310svh}
   #hero-scroll .hero-sticky{height:100svh;top:0}
@@ -933,7 +933,7 @@ button,a { -webkit-tap-highlight-color:transparent }
  .bv-route-teaser{gap:10px;padding-top:19px;letter-spacing:.11em;font-size:9px}
  .bv-route-arrow{font-size:27px}
  .nav-reserve{display:flex;width:100%;align-items:center;justify-content:space-between;background:#d47654;border:0;color:#181611;padding:17px 20px;font:800 12px var(--sans);text-transform:uppercase;letter-spacing:.13em;min-height:52px;cursor:pointer}
- .nav-reserve span{font-size:20px}
+ .nav-reserve span:not([data-text]){font-size:20px}
  .nav.open{padding-bottom:12px}
  .nav.open a{min-height:43px;display:flex;align-items:center}
 }
@@ -1130,7 +1130,7 @@ button,a { -webkit-tap-highlight-color:transparent }
 .bello-real-journal{background:#f3ece0;color:#1a1a16;padding:clamp(48px,7vw,110px) 0 clamp(45px,6vw,80px)}
 .brj-head,.brj-bottom,.brm-top,.brm-bottom{padding-inline:clamp(22px,5vw,90px)}
 .brj-overline,.brm-eyebrow{font:800 11px/1.3 "DM Sans",sans-serif;letter-spacing:.20em;text-transform:uppercase;color:#aa4b36}
-.brj-overline span{color:#9c9181;margin:0 10px}
+.brj-overline span:not([data-text]){color:#9c9181;margin:0 10px}
 .brj-headline{display:grid;grid-template-columns:1fr minmax(200px,330px);gap:35px;align-items:end;margin-top:20px;margin-bottom:34px}
 .brj-headline h2,.brm-intro h2{font:600 clamp(66px,9.5vw,140px)/.94 "Playfair Display",Georgia,serif;letter-spacing:-.073em;margin:0}
 .brj-headline h2 em,.brm-intro h2 em{font-weight:500;color:#bc4936}
@@ -1160,7 +1160,7 @@ button,a { -webkit-tap-highlight-color:transparent }
 .brm-intro p{max-width:420px;line-height:1.78;color:#d2c7b8;font-size:15px}
 .brm-intro strong{color:#fff}
 .brm-source{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:480px;margin:28px 0 26px auto;padding:16px 0;border-top:1px solid #e5dac775;border-bottom:1px solid #e5dac775;color:#f6ecde;text-decoration:none;font:800 11px "DM Sans",sans-serif;letter-spacing:.08em;text-transform:uppercase}
-.brm-source span{font-size:25px;color:#e7a183}
+.brm-source span:not([data-text]){font-size:25px;color:#e7a183}
 .brm-page{scroll-snap-align:start;flex:0 0 min(78vw,525px);min-height:590px;display:flex;flex-direction:column;background:#f5eee1;color:#1d211a;padding:clamp(25px,3vw,44px);position:relative;overflow:hidden;box-shadow:0 15px 40px #0002}
 .brm-page:nth-child(2){background:#e7d5bf}.brm-page:nth-child(3){background:#ebe5d8}
 .brm-page:before{content:"";position:absolute;inset:0 auto 0 0;width:8px;background:#be4938}
@@ -1261,7 +1261,7 @@ a.nav-book,a.bv-cta{line-height:normal}
 @media(max-width:860px){
   .site-header .nav a.nav-reserve{display:flex;box-sizing:border-box;width:100%;align-items:center;justify-content:space-between;background:#d47654;color:#181611;padding:17px 20px;font:800 12px var(--sans);text-transform:uppercase;letter-spacing:.13em;min-height:52px}
   .site-header .nav a.nav-reserve:hover{color:#181611;opacity:1;transform:none}
-  .site-header .nav a.nav-reserve span{font-size:20px}
+  .site-header .nav a.nav-reserve span:not([data-text]){font-size:20px}
   .header-wrap .nav.open{padding-bottom:12px}
   .header-wrap .nav.open a{min-height:43px;display:flex;align-items:center}
 }
@@ -1281,7 +1281,7 @@ a.nav-book,a.bv-cta{line-height:normal}
 #concept,#menu,#visit,#bello-walk{scroll-margin-top:0}
 
 /* Hero scroll cue: keep the arrow pointing down inside the vertical label. */
-#hero-scroll .scroll-cue span{writing-mode:horizontal-tb}
+#hero-scroll .scroll-cue span:not([data-text]){writing-mode:horizontal-tb}
 
 /* Video cards in the format of the clips (9:16) so nothing is cut off. */
 .brj-item{flex:0 0 clamp(240px,min(26vw,42svh),400px)}
@@ -1312,7 +1312,7 @@ a.nav-book,a.bv-cta{line-height:normal}
 .bello-specials:before{content:"";display:block;height:14px;background:repeating-linear-gradient(90deg,#e0261c 0 22px,#fff6e8 22px 44px);margin-bottom:clamp(30px,4.5vw,58px)}
 .bsp-head{padding-inline:clamp(22px,5vw,90px);margin-bottom:clamp(18px,2.4vw,30px)}
 .bsp-overline{font:800 11px/1.3 "DM Sans",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#c81e17}
-.bsp-overline span{margin:0 8px;color:#17181366}
+.bsp-overline span:not([data-text]){margin:0 8px;color:#17181366}
 .bsp-head h2{font:600 clamp(44px,6vw,84px)/.98 "Playfair Display",Georgia,serif;letter-spacing:-.06em;margin:10px 0 0}
 .bsp-head h2 em{font-weight:500;color:#e0261c}
 .bsp-row{display:flex;gap:clamp(12px,2vw,26px);padding:4px clamp(22px,5vw,90px) 14px;overflow-x:auto;scroll-snap-type:x proximity;scroll-padding-inline:clamp(22px,5vw,90px);overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:#e0261c transparent}
@@ -1351,4 +1351,25 @@ body.is-preview{padding-bottom:46px}
 }
 @container (min-width:680px){
   .brm-page ul{grid-template-columns:1fr 1fr;column-gap:clamp(28px,5cqw,64px);align-content:start}
+}
+
+/* Menu on desktop: cards keep a readable width; on wide screens the heading,
+   intro and tabs sit in a left column and the cards beside them. */
+@media(min-width:1100px){
+  .brm-panel{display:flex;flex-wrap:wrap;align-items:stretch}
+  .brm-panel[hidden]{display:none}
+  .brm-panel .brm-page{flex:1 1 340px;max-width:600px;container-type:normal}
+}
+@media(min-width:1500px){
+  .bello-real-menu{display:grid;grid-template-columns:minmax(400px,32%) minmax(0,1fr);column-gap:clamp(36px,3.5vw,80px);align-items:start}
+  .bello-real-menu .brm-top{grid-column:1;grid-row:1;padding-right:0}
+  .bello-real-menu .brm-intro{grid-template-columns:1fr;gap:18px}
+  .bello-real-menu .brm-intro h2{font-size:clamp(84px,6.4vw,132px)}
+  .bello-real-menu .brm-source{margin:26px 0 30px 0;max-width:none}
+  .bello-real-menu .brm-tabs{grid-column:1;grid-row:2;padding-right:0;margin-bottom:0}
+  .bello-real-menu .brm-panel{grid-column:2;grid-row:1 / span 3;padding-left:0}
+}
+/* Very wide screens: content of these two sections stays within 1800 px, centred. */
+@media(min-width:1980px){
+  .bello-real-menu,.bello-real-journal{padding-inline:calc((100vw - 1980px)/2)}
 }
