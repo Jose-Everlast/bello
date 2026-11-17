@@ -9,7 +9,7 @@
     "menu.intro.text": "Das ist unsere Karte. Es gilt immer die Karte bei uns vor Ort.",
     "visit.address": "Kurze Str. 6A, 37073 Göttingen",
     "visit.hours1": "Di–Sa 14:30–00:00",
-    "visit.hours2": "So 14:00–22:00",
+    "visit.hours2": "So geschlossen",
     "visit.closed": "Montag Ruhetag"
   },
   "menu": [
@@ -22,14 +22,70 @@
           "title": "Mangiare",
           "subtitle": "Kleinigkeiten zum Teilen",
           "items": [
-            { "id": "aperitivo-platte", "name": "Aperitivo-Platte", "price": "5 €", "text": "Kichererbsencreme · Focaccia · Oliven · Tagesspezial", "note": "Aperitivo wie in Italien.", "hidden": false },
-            { "id": "affettato-misto", "name": "Affettato Misto", "price": "14 €", "text": "Schinken · Mortadella · Bresaola · Provolone · Schafskäse", "note": "Dazu Focaccia.", "hidden": false },
-            { "id": "burrata-e-pomodoro", "name": "Burrata e Pomodoro", "price": "9 €", "text": "Burrata · Tomate · Basilikum", "note": "Dazu Focaccia.", "hidden": false },
-            { "id": "bruschettona-xl", "name": "Bruschettona XL", "price": "8 €", "text": "XL-Brot · Tomate · Basilikum · Knoblauch · Olivenöl", "note": "Auch als halbe Portion für 5 €.", "hidden": false },
-            { "id": "panissa-genovese", "name": "Panissa Genovese", "price": "8,50 €", "text": "Frittierter Kichererbsenteig · Kichererbsencreme · Sumach", "note": "", "hidden": false },
-            { "id": "crostino-tonnato", "name": "Crostino Tonnato", "price": "6 €", "text": "Crostini · Thunfischsoße", "note": "", "hidden": false },
-            { "id": "polpette-al-sugo", "name": "Polpette al Sugo", "price": "10 €", "text": "Hackfleischbällchen mit Tomatensoße", "note": "", "hidden": false },
-            { "id": "torta-della-nonna", "name": "Torta della Nonna", "price": "5,50 €", "text": "Zitronencreme-Tarte mit Pinienkernen", "note": "", "hidden": false }
+            {
+              "id": "aperitivo-platte",
+              "name": "Aperitivo-Platte",
+              "price": "5 €",
+              "text": "Kichererbsencreme · Focaccia · Oliven · Tagesspezial",
+              "note": "Aperitivo wie in Italien.",
+              "hidden": false
+            },
+            {
+              "id": "affettato-misto",
+              "name": "Affettato Misto",
+              "price": "14 €",
+              "text": "Schinken · Mortadella · Bresaola · Provolone · Schafskäse",
+              "note": "Dazu Focaccia.",
+              "hidden": false
+            },
+            {
+              "id": "burrata-e-pomodoro",
+              "name": "Burrata e Pomodoro",
+              "price": "9 €",
+              "text": "Burrata · Tomate · Basilikum",
+              "note": "Dazu Focaccia.",
+              "hidden": false
+            },
+            {
+              "id": "bruschettona-xl",
+              "name": "Bruschettona XL",
+              "price": "8 €",
+              "text": "XL-Brot · Tomate · Basilikum · Knoblauch · Olivenöl",
+              "note": "Auch als halbe Portion für 5 €.",
+              "hidden": false
+            },
+            {
+              "id": "panissa-genovese",
+              "name": "Panissa Genovese",
+              "price": "8,50 €",
+              "text": "Frittierter Kichererbsenteig · Kichererbsencreme · Sumach",
+              "note": "",
+              "hidden": false
+            },
+            {
+              "id": "crostino-tonnato",
+              "name": "Crostino Tonnato",
+              "price": "6 €",
+              "text": "Crostini · Thunfischsoße",
+              "note": "",
+              "hidden": false
+            },
+            {
+              "id": "polpette-al-sugo",
+              "name": "Polpette al Sugo",
+              "price": "10 €",
+              "text": "Hackfleischbällchen mit Tomatensoße",
+              "note": "",
+              "hidden": false
+            },
+            {
+              "id": "torta-della-nonna",
+              "name": "Torta della Nonna",
+              "price": "5,50 €",
+              "text": "Zitronencreme-Tarte mit Pinienkernen",
+              "note": "",
+              "hidden": false
+            }
           ]
         },
         {
@@ -37,10 +93,38 @@
           "title": "Focaccia",
           "subtitle": "Eigenes Rezept, gebacken mit MATTI Göttingen",
           "items": [
-            { "id": "mortadella-provolone", "name": "Mortadella & Provolone", "price": "9 €", "text": "Mortadella · Provolone · Senf", "note": "", "hidden": false },
-            { "id": "panissa-cipolla", "name": "Panissa & Cipolla", "price": "9 €", "text": "Frittierter Kichererbsenteig · Zwiebeln · Kichererbsencreme", "note": "", "hidden": false },
-            { "id": "focaccia-burrata-e-pomodoro", "name": "Burrata e Pomodoro", "price": "10 €", "text": "Burrata · Tomate · Basilikum · Pistazie", "note": "", "hidden": false },
-            { "id": "bresaola-tonno", "name": "Bresaola & Tonno", "price": "11 €", "text": "Bresaola · Thunfischsoße · Honig · Trüffelöl · Rucola", "note": "", "hidden": false }
+            {
+              "id": "mortadella-provolone",
+              "name": "Mortadella & Provolone",
+              "price": "9 €",
+              "text": "Mortadella · Provolone · Senf",
+              "note": "",
+              "hidden": false
+            },
+            {
+              "id": "panissa-cipolla",
+              "name": "Panissa & Cipolla",
+              "price": "9 €",
+              "text": "Frittierter Kichererbsenteig · Zwiebeln · Kichererbsencreme",
+              "note": "",
+              "hidden": false
+            },
+            {
+              "id": "focaccia-burrata-e-pomodoro",
+              "name": "Burrata e Pomodoro",
+              "price": "10 €",
+              "text": "Burrata · Tomate · Basilikum · Pistazie",
+              "note": "",
+              "hidden": false
+            },
+            {
+              "id": "bresaola-tonno",
+              "name": "Bresaola & Tonno",
+              "price": "11 €",
+              "text": "Bresaola · Thunfischsoße · Honig · Trüffelöl · Rucola",
+              "note": "",
+              "hidden": false
+            }
           ]
         }
       ]
@@ -54,11 +138,46 @@
           "title": "Negronis",
           "subtitle": "Dreimal Negroni, dreimal anders",
           "items": [
-            { "id": "bianco", "name": "Bianco", "price": "11 €", "text": "No. 3 Gin · Bitter Bianco · Kokosöl · Pino Mugo · Bianco Vermouth · Ginger Spirit", "note": "", "hidden": false },
-            { "id": "rosa", "name": "Rosa", "price": "11 €", "text": "Gin · Rhabarber-Amaro · Rosé Vermouth · Americano Rosa · Rosenwasser", "note": "", "hidden": false },
-            { "id": "bellogroni", "name": "Bellogroni", "price": "11 €", "text": "Gin · Amaro Bello · Fusetti Bitter · Uvabianca · Vermouth-Mix", "note": "", "hidden": false },
-            { "id": "mini-negroni", "name": "Mini-Negroni", "price": "6 €", "text": "Jeder Negroni auch als Mini", "note": "", "hidden": false },
-            { "id": "mini-negroni-trio", "name": "Mini-Negroni-Trio", "price": "15 €", "text": "Alle drei zum Probieren", "note": "", "hidden": false }
+            {
+              "id": "bianco",
+              "name": "Bianco",
+              "price": "11 €",
+              "text": "No. 3 Gin · Bitter Bianco · Kokosöl · Pino Mugo · Bianco Vermouth · Ginger Spirit",
+              "note": "",
+              "hidden": false
+            },
+            {
+              "id": "rosa",
+              "name": "Rosa",
+              "price": "11 €",
+              "text": "Gin · Rhabarber-Amaro · Rosé Vermouth · Americano Rosa · Rosenwasser",
+              "note": "",
+              "hidden": false
+            },
+            {
+              "id": "bellogroni",
+              "name": "Bellogroni",
+              "price": "11 €",
+              "text": "Gin · Amaro Bello · Fusetti Bitter · Uvabianca · Vermouth-Mix",
+              "note": "",
+              "hidden": false
+            },
+            {
+              "id": "mini-negroni",
+              "name": "Mini-Negroni",
+              "price": "6 €",
+              "text": "Jeder Negroni auch als Mini",
+              "note": "",
+              "hidden": false
+            },
+            {
+              "id": "mini-negroni-trio",
+              "name": "Mini-Negroni-Trio",
+              "price": "15 €",
+              "text": "Alle drei zum Probieren",
+              "note": "",
+              "hidden": false
+            }
           ]
         },
         {
@@ -66,12 +185,54 @@
           "title": "Cocktails",
           "subtitle": "Klassiker mit Bello-Touch",
           "items": [
-            { "id": "amaretto-sour", "name": "Amaretto Sour", "price": "10 €", "text": "Nonino Prunella Mandorlata · Vecchia Romagna Brandy · Zitrone · Burrata-Wasser", "note": "", "hidden": false },
-            { "id": "pornstar-martini", "name": "Pornstar Martini", "price": "12 €", "text": "Vodka · Uvabianca Nonino · Galliano Vanilla · Limette · Maracuja · Prosecco", "note": "", "hidden": false },
-            { "id": "margarita", "name": "Margarita", "price": "13 €", "text": "41 bis Agavendestillat · geräuchertes Kaktusdestillat · Zitrone · Bergamotte · Orangenlikör · Salzrand", "note": "", "hidden": false },
-            { "id": "espresso-martini", "name": "Espresso Martini", "price": "10 €", "text": "Vodka · Espressolikör · Espresso · Kakao", "note": "", "hidden": false },
-            { "id": "paper-plane", "name": "Paper Plane", "price": "12 €", "text": "Amaro Nonino · Brandy · Aperol · Zitrone", "note": "", "hidden": false },
-            { "id": "parla-con-me", "name": "Parla con me", "price": "", "text": "Rede mit unserem Personal", "note": "Sie freuen sich, was für dich zu mixen.", "hidden": false }
+            {
+              "id": "amaretto-sour",
+              "name": "Amaretto Sour",
+              "price": "10 €",
+              "text": "Nonino Prunella Mandorlata · Vecchia Romagna Brandy · Zitrone · Burrata-Wasser",
+              "note": "",
+              "hidden": false
+            },
+            {
+              "id": "pornstar-martini",
+              "name": "Pornstar Martini",
+              "price": "12 €",
+              "text": "Vodka · Uvabianca Nonino · Galliano Vanilla · Limette · Maracuja · Prosecco",
+              "note": "",
+              "hidden": false
+            },
+            {
+              "id": "margarita",
+              "name": "Margarita",
+              "price": "13 €",
+              "text": "41 bis Agavendestillat · geräuchertes Kaktusdestillat · Zitrone · Bergamotte · Orangenlikör · Salzrand",
+              "note": "",
+              "hidden": false
+            },
+            {
+              "id": "espresso-martini",
+              "name": "Espresso Martini",
+              "price": "10 €",
+              "text": "Vodka · Espressolikör · Espresso · Kakao",
+              "note": "",
+              "hidden": false
+            },
+            {
+              "id": "paper-plane",
+              "name": "Paper Plane",
+              "price": "12 €",
+              "text": "Amaro Nonino · Brandy · Aperol · Zitrone",
+              "note": "",
+              "hidden": false
+            },
+            {
+              "id": "parla-con-me",
+              "name": "Parla con me",
+              "price": "",
+              "text": "Rede mit unserem Personal",
+              "note": "Sie freuen sich, was für dich zu mixen.",
+              "hidden": false
+            }
           ]
         }
       ]
@@ -85,13 +246,62 @@
           "title": "Aperitivo",
           "subtitle": "Spritz & Signatures",
           "items": [
-            { "id": "spritz", "name": "Spritz", "price": "7 €", "text": "Aperitivo nach Wahl · Frizzante · Soda", "note": "Auch alkoholfrei. Keine Zeit? Als Mini für 4,50 €.", "hidden": false },
-            { "id": "fusettone", "name": "Fusettone", "price": "8,50 €", "text": "Fusetti Bitter Aperitivo · Grapefruitsoda", "note": "Mailands neuer Trend-Aperitivo.", "hidden": false },
-            { "id": "applause", "name": "Applause", "price": "8,50 €", "text": "Nonino Botanical Drink · roter Apfel-Secco · Zitrone", "note": "Frisch, lustig und zitronig.", "hidden": false },
-            { "id": "shakerato-svegliato", "name": "Shakerato Svegliato", "price": "8 €", "text": "Campari · Kaffeelikör · Kaffeebohnen", "note": "Mailänder Klassiker mit Bello-Touch.", "hidden": false },
-            { "id": "due-amici", "name": "Due Amici", "price": "9,50 €", "text": "Bergamotten-Aperitivo · Crodino · Minze · Grapefruit", "note": "Signature seit 2018.", "hidden": false },
-            { "id": "italo-mule", "name": "Italo Mule", "price": "8 €", "text": "Martini Floreale (unter 0,5 %) · Limette · Ginger Beer", "note": "Leicht scharf, alkoholfrei.", "hidden": false },
-            { "id": "sbagliato-rosa", "name": "Sbagliato Rosa", "price": "9,50 €", "text": "Select Aperitivo · Rhabarber · Americano Rosa · Rosé Frizzante", "note": "Sbagliato, noch mehr sbagliato.", "hidden": false }
+            {
+              "id": "spritz",
+              "name": "Spritz",
+              "price": "7 €",
+              "text": "Aperitivo nach Wahl · Frizzante · Soda",
+              "note": "Auch alkoholfrei. Keine Zeit? Als Mini für 4,50 €.",
+              "hidden": false
+            },
+            {
+              "id": "fusettone",
+              "name": "Fusettone",
+              "price": "8,50 €",
+              "text": "Fusetti Bitter Aperitivo · Grapefruitsoda",
+              "note": "Mailands neuer Trend-Aperitivo.",
+              "hidden": false
+            },
+            {
+              "id": "applause",
+              "name": "Applause",
+              "price": "8,50 €",
+              "text": "Nonino Botanical Drink · roter Apfel-Secco · Zitrone",
+              "note": "Frisch, lustig und zitronig.",
+              "hidden": false
+            },
+            {
+              "id": "shakerato-svegliato",
+              "name": "Shakerato Svegliato",
+              "price": "8 €",
+              "text": "Campari · Kaffeelikör · Kaffeebohnen",
+              "note": "Mailänder Klassiker mit Bello-Touch.",
+              "hidden": false
+            },
+            {
+              "id": "due-amici",
+              "name": "Due Amici",
+              "price": "9,50 €",
+              "text": "Bergamotten-Aperitivo · Crodino · Minze · Grapefruit",
+              "note": "Signature seit 2018.",
+              "hidden": false
+            },
+            {
+              "id": "italo-mule",
+              "name": "Italo Mule",
+              "price": "8 €",
+              "text": "Martini Floreale (unter 0,5 %) · Limette · Ginger Beer",
+              "note": "Leicht scharf, alkoholfrei.",
+              "hidden": false
+            },
+            {
+              "id": "sbagliato-rosa",
+              "name": "Sbagliato Rosa",
+              "price": "9,50 €",
+              "text": "Select Aperitivo · Rhabarber · Americano Rosa · Rosé Frizzante",
+              "note": "Sbagliato, noch mehr sbagliato.",
+              "hidden": false
+            }
           ]
         },
         {
@@ -99,12 +309,54 @@
           "title": "Soft Drinks & Bier",
           "subtitle": "Limo, Birra, Caffè",
           "items": [
-            { "id": "italienische-limos", "name": "Italienische Limos", "price": "4 €", "text": "Chinotto · Cedrata · Gazzosa · Limonata · Aranciata", "note": "", "hidden": false },
-            { "id": "birra-italiana", "name": "Birra Italiana", "price": "5 €", "text": "Moretti · Messina · Moretti 0,0 %", "note": "", "hidden": false },
-            { "id": "birra-italiana-del-mese", "name": "Birra Italiana del Mese", "price": "6 €", "text": "Italienisches Bier des Monats", "note": "Frag unser Personal.", "hidden": false },
-            { "id": "s-pellegrino-wasser", "name": "S.Pellegrino Wasser", "price": "4 € / 7 €", "text": "", "note": "", "hidden": false },
-            { "id": "espresso-cappuccino", "name": "Espresso / Cappuccino", "price": "3,50 € / 4,50 €", "text": "", "note": "", "hidden": false },
-            { "id": "espresso-al-banco", "name": "Espresso al Banco", "price": "2 €", "text": "Espresso an der Theke wie in Italien", "note": "Shot and go.", "hidden": false }
+            {
+              "id": "italienische-limos",
+              "name": "Italienische Limos",
+              "price": "4 €",
+              "text": "Chinotto · Cedrata · Gazzosa · Limonata · Aranciata",
+              "note": "",
+              "hidden": false
+            },
+            {
+              "id": "birra-italiana",
+              "name": "Birra Italiana",
+              "price": "5 €",
+              "text": "Moretti · Messina · Moretti 0,0 %",
+              "note": "",
+              "hidden": false
+            },
+            {
+              "id": "birra-italiana-del-mese",
+              "name": "Birra Italiana del Mese",
+              "price": "6 €",
+              "text": "Italienisches Bier des Monats",
+              "note": "Frag unser Personal.",
+              "hidden": false
+            },
+            {
+              "id": "s-pellegrino-wasser",
+              "name": "S.Pellegrino Wasser",
+              "price": "4 € / 7 €",
+              "text": "",
+              "note": "",
+              "hidden": false
+            },
+            {
+              "id": "espresso-cappuccino",
+              "name": "Espresso / Cappuccino",
+              "price": "3,50 € / 4,50 €",
+              "text": "",
+              "note": "",
+              "hidden": false
+            },
+            {
+              "id": "espresso-al-banco",
+              "name": "Espresso al Banco",
+              "price": "2 €",
+              "text": "Espresso an der Theke wie in Italien",
+              "note": "Shot and go.",
+              "hidden": false
+            }
           ]
         }
       ]
