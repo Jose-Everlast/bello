@@ -24,7 +24,7 @@ export async function GET(request) {
     // Without the secret no token can be checked offline: refuse instead of reading state for anyone.
     const secret = previewSecret();
     if (!secret) {
-      log('preview_error', { message: 'PREVIEW_SECRET bzw. WHATSAPP_APP_SECRET fehlt' });
+      log('preview_error', { message: 'PREVIEW_SECRET, WHATSAPP_APP_SECRET bzw. TELEGRAM_WEBHOOK_SECRET fehlt' });
       return unavailable();
     }
     const { store, misses } = getShared();
