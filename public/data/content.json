@@ -101,7 +101,14 @@
     "footer.instagram": "Instagram: @bello.aperitivobar",
     "footer.back": "NACH OBEN ↑"
   },
-  "styles": {},
+  "styles": {
+    "hero.toast1": {
+      "scale": 1.5
+    },
+    "hero.toast2": {
+      "scale": 1.5
+    }
+  },
   "menu": [
     {
       "id": "snacks",
