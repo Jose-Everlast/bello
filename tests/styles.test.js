@@ -220,10 +220,11 @@ test('the static page shows exactly the wording of content.json (it is the fallb
   assert.equal(SCRIPT_TEXT_KEYS.length, 16);
 });
 
-test('content.json: valid, with empty styles, nothing over the cap', () => {
+test('content.json: valid, styles present, nothing over the cap', () => {
   const site = siteContent();
+  // The live file is edited by the bot, so it may carry sizes; it must stay valid.
   assert.deepEqual(validateContent(site), []);
-  assert.deepEqual(site.styles, {});
+  assert.equal(typeof site.styles, 'object');
 });
 
 test('names: one for every key and group, unique, and the page script knows the same groups', () => {
@@ -304,7 +305,7 @@ test('request: the model gets key, name, size and current wording of every text,
 
   const site = siteContent();
   const directory = textDirectory(site);
-  for (const key of Object.keys(site.texts)) assert.ok(directory.includes(`\n${key} | ${TEXT_LABELS[key]} | 100 % | ${site.texts[key]}`), key);
+  for (const key of Object.keys(site.texts)) assert.ok(directory.includes(`\n${key} | ${TEXT_LABELS[key]} | ${Math.round(scaleOf(site, key) * 100)} % | ${site.texts[key]}`), key);
   // A text with a line break (old data) cannot break out of its line.
   assert.equal(textDirectory({ texts: { 'hero.text': 'a\nmenu.item.price | x' } }).split('\n').length, 4 + Object.keys(STYLE_GROUPS).length);
 });
