@@ -112,8 +112,8 @@
     'concept.card1.text':'.brj-caption p[data-text-list]',
     'hero.stage.title':'#stage-title',
     'hero.stage.text':'#stage-subtitle',
-    'walk.step.title':'#bm-step-title',
-    'walk.step.text':'#bm-step-sub',
+    'walk.step.title':'#bello-walk .bm-rs-title',
+    'walk.step.text':'#bello-walk .bm-rs-text',
   };
   const TEXT_KEY=/^[a-z0-9]+(?:\.[a-z0-9]+)*$/;
   const MIN_SCALE=.5,MAX_SCALE=3;

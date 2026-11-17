@@ -361,12 +361,6 @@ input,select{width:100%;border:1px solid rgba(23,23,23,.1);border-radius:18px;pa
 .bm-title{font:500 clamp(56px,6vw,104px)/.97 var(--serif,Georgia,serif);letter-spacing:-.075em;margin:28px 0;color:#fff5e8}
 .bm-title em{color:#efa478;font-weight:400}
 .bm-deck{max-width:430px;font:400 clamp(14px,1.2vw,17px)/1.75 var(--sans,Arial,sans-serif);color:#cfc5b4}
-.bm-step{border-top:1px solid #ffffff35;padding:23px 0 13px;display:grid;grid-template-columns:52px minmax(0,1fr);gap:16px}
-.bm-step-index{font:600 30px/.9 var(--serif,Georgia,serif);color:#ed9971}
-.bm-step-title{display:block;font:700 16px/1.2 var(--sans,Arial,sans-serif);letter-spacing:.08em;color:#fff2e5;text-transform:uppercase;transition:opacity .3s}
-.bm-step-sub{display:block;font:400 13px/1.6 var(--sans,Arial,sans-serif);color:#c4b8a6;margin-top:10px}
-.bm-progress-track{height:3px;background:#ffffff2d;position:relative;margin:19px 0 22px;overflow:hidden}
-.bm-progress-fill{height:100%;background:#e98360;transform:scaleX(0);transform-origin:left;will-change:transform}
 .bm-stats{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
 .bm-stats b{font:700 28px/1 var(--serif,Georgia,serif);letter-spacing:-.035em;color:#fff1df}
 .bm-stats span{font:800 10px/1.6 var(--sans,Arial,sans-serif);letter-spacing:.13em;color:#c6b7a6;text-transform:uppercase;margin-left:8px}
@@ -379,42 +373,6 @@ input,select{width:100%;border:1px solid rgba(23,23,23,.1);border-radius:18px;pa
 .bm-map-caption{position:absolute;top:16px;right:10px;font:800 10px/1.2 var(--sans,Arial,sans-serif);letter-spacing:.2em;color:#e8dbbf}
 .bm-end{opacity:.15;transition:opacity .35s;will-change:opacity}
 .bm-end.bm-reached{opacity:1}
-@media(max-width:950px){
- .bm-inner{grid-template-columns:1fr;grid-template-rows:auto 1fr auto;gap:5px;padding:100px 22px 18px}
- .bm-copy{display:contents}
- .bm-copy-main{grid-row:1}
- .bm-map-wrap{grid-row:2;min-height:0;align-self:stretch}
- .bm-bottom-controls{grid-row:3}
- .bm-title{font-size:clamp(49px,8vw,74px);margin:12px 0 8px}
- .bm-deck{font-size:13px;line-height:1.6;max-width:470px}
- .bm-sticky{min-height:550px}
- .bm-plan{width:min(100%,760px);height:100%;max-height:100%;aspect-ratio:unset}
- .bm-step{padding:12px 0 6px;grid-template-columns:42px 1fr}
- .bm-step-index{font-size:25px}
- .bm-step-title{font-size:13px}
- .bm-step-sub{font-size:11px;margin-top:4px}
- .bm-stats{gap:16px}
- .bm-stats b{font-size:22px}
- .bm-open{min-height:42px;padding:9px 13px;font-size:10px}
- .bm-progress-track{margin:12px 0}
- .bm-map-caption{right:3px;top:0;font-size:8px}
- .bm-paper-label{position:relative;text-align:left;font-size:8px;right:auto;bottom:auto}
- .bm-bottom-row{display:flex;align-items:center;justify-content:space-between;gap:15px}
-}
-@media(max-width:510px){
- .bello-map-scroll{height:265svh}
- .bm-inner{padding:82px 18px 15px}
- .bm-title{font-size:clamp(43px,12.5vw,60px)}
- .bm-deck{max-width:320px;font-size:12px;line-height:1.5}
- .bm-map-wrap{margin:-2px -18px -20px;overflow:hidden}
- .bm-plan{width:110%;min-width:110%;height:100%;transform:translateX(-2%) scale(1.1)}
- .bm-step-index{font-size:22px}
- .bm-progress-track{margin:11px 0}
- .bm-stats b{font-size:21px}
- .bm-open{font-size:9px;max-width:215px}
- .bm-open span:not([data-text]){display:none}
-}
-@media(prefers-reduced-motion:reduce){.bm-progress-fill{transform:scaleX(1)}.bm-end{opacity:1}}
 
 
 
@@ -1372,4 +1330,122 @@ body.is-preview{padding-bottom:46px}
 /* Very wide screens: content of these two sections stays within 1800 px, centred. */
 @media(min-width:1980px){
   .bello-real-menu,.bello-real-journal{padding-inline:calc((100vw - 1980px)/2)}
+}
+
+/* ===== Der Weg: step list next to the map, map drawn from OpenStreetMap ===== */
+.bm-inner{width:min(1800px,100%);grid-template-columns:minmax(360px,.82fr) minmax(0,1.18fr);gap:clamp(28px,4vw,80px);padding:clamp(84px,10svh,128px) clamp(24px,5vw,80px) clamp(22px,4svh,48px);align-items:stretch}
+.bm-copy{justify-content:flex-start;min-height:0}
+.bm-title{font-size:clamp(46px,min(5.6vw,9svh),104px);margin:clamp(10px,2svh,26px) 0}
+.bm-deck{margin:0;max-width:470px;font-size:clamp(14px,min(1.1vw,1.9svh),18px);line-height:1.65}
+.bm-route{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;justify-content:center;padding:clamp(14px,3svh,40px) 0 clamp(12px,2.4svh,30px)}
+.bm-route-steps{list-style:none;margin:0;padding:0;display:grid;gap:clamp(2px,1svh,12px);counter-reset:none}
+.bm-rs{opacity:.42;transition:opacity .45s ease,transform .45s ease}
+.bm-rs.is-past{opacity:.56}
+.bm-rs[aria-current="step"]{opacity:1;transform:translateX(6px)}
+.bm-rs-btn{appearance:none;-webkit-appearance:none;background:none;border:0;margin:0;color:inherit;font:inherit;text-align:left;cursor:pointer;width:100%;position:relative;display:grid;grid-template-columns:clamp(46px,3.8vw,74px) minmax(0,1fr);align-items:baseline;padding:clamp(6px,1.2svh,14px) 0 clamp(6px,1.2svh,14px) 20px}
+.bm-rs-btn:before{content:"";position:absolute;left:0;top:clamp(8px,1.6svh,18px);bottom:clamp(8px,1.6svh,18px);width:2px;border-radius:2px;background:#ed9971;transform:scaleY(0);transform-origin:top;transition:transform .45s ease}
+.bm-rs[aria-current="step"] .bm-rs-btn:before{transform:scaleY(1)}
+.bm-rs-btn:hover{opacity:1}
+.bm-rs:not([aria-current]):hover{opacity:.78}
+.bm-rs-btn:focus-visible{outline:2px solid #efa478;outline-offset:4px}
+.bm-rs-num{font:italic 400 clamp(28px,min(2.6vw,4.4svh),52px)/1 var(--serif,Georgia,serif);color:#ed9971;letter-spacing:-.04em}
+.bm-rs-body{min-width:0}
+.bm-rs-title{display:block;font:500 clamp(22px,min(2.15vw,3.7svh),42px)/1.08 var(--serif,Georgia,serif);letter-spacing:-.035em;color:#fff5e8}
+.bm-rs-text{display:block;margin-top:.4em;font:400 clamp(13px,min(1.05vw,1.85svh),18px)/1.5 var(--sans,Arial,sans-serif);color:#d4c9b6}
+.bm-dots{display:none}
+.bm-bottom-row{display:flex;align-items:center;justify-content:space-between;gap:16px 24px;flex-wrap:wrap;border-top:1px solid #ffffff2b;padding-top:clamp(12px,2svh,22px)}
+.bm-stats{gap:0 10px;align-items:baseline}
+.bm-stats b{font-size:clamp(24px,min(2vw,3.4svh),36px)}
+.bm-stats span{margin-left:0}
+.bm-open{min-height:46px;padding:12px 16px}
+/* The map fills its column; the script fits the visible part to the box (no letterboxing, no clipping of the route). */
+.bm-map-wrap{display:flex;flex-direction:column;align-items:stretch;place-items:stretch;gap:8px;min-height:0;overflow:hidden}
+.bm-map-wrap:before{display:none}
+.bm-map-caption,.bm-paper-label{position:static;flex:none}
+.bm-map-caption{align-self:flex-end;font-size:10px}
+.bm-paper-label{align-self:flex-end;font-size:9px}
+.bm-map-frame{position:relative;flex:1 1 0;min-height:0;border:1px solid #ffffff1c;border-radius:4px;overflow:hidden}
+.bm-plan{display:block;width:100%;height:100%;max-height:none;aspect-ratio:auto;overflow:hidden;-webkit-mask-image:radial-gradient(ellipse 75% 75% at 50% 50%,#000 70%,transparent 100%);mask-image:radial-gradient(ellipse 75% 75% at 50% 50%,#000 70%,transparent 100%)}
+.bm-lbl-w{opacity:.62}
+.bm-map-labels{opacity:.62}
+.bm-badge circle{fill:#1a241c;stroke:#f4e7cf;stroke-opacity:.7;stroke-width:1.6;transition:fill .35s,stroke .35s}
+.bm-badge text{fill:#f4e7cf;transition:fill .35s}
+.bm-badge.is-past circle{stroke:#ed9971}
+.bm-badge.is-current circle{fill:#ed8157;stroke:#fff2dc;stroke-opacity:1}
+.bm-badge.is-current text{fill:#1a1410}
+
+/* Tablet and phone: map on top, the steps below it. */
+@media(max-width:900px){
+  .bm-sticky{min-height:540px}
+  .bm-inner{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr) auto auto;gap:10px;padding:96px 22px 16px}
+  .bm-copy{display:contents}
+  .bm-copy-main{grid-row:1}
+  .bm-map-wrap{grid-row:2;gap:4px}
+  .bm-route{grid-row:3;padding:2px 0 0}
+  .bm-bottom-row{grid-row:4;padding-top:10px}
+  .bm-title{font-size:clamp(42px,8vw,72px);margin:10px 0 8px}
+  .bm-deck{font-size:14px;line-height:1.55;max-width:560px}
+  .bm-map-caption{font-size:9px}
+  .bm-paper-label{font-size:8px}
+  .bm-route-steps{grid-template-columns:1fr 1fr;gap:4px 24px}
+  .bm-rs[aria-current="step"]{transform:none}
+  .bm-rs-btn{grid-template-columns:44px minmax(0,1fr);padding:8px 0 8px 14px}
+  .bm-rs-num{font-size:30px}
+  .bm-rs-title{font-size:23px}
+  .bm-rs-text{font-size:14px}
+}
+/* Phone: one compact line per step, the current one with its sentence. */
+@media(max-width:760px){
+  .bm-inner{padding:84px 18px 14px;gap:8px}
+  .bm-title{font-size:clamp(40px,11.5vw,58px);margin:8px 0 6px}
+  .bm-deck{font-size:12.5px;line-height:1.5;max-width:340px}
+  .bm-route-steps{grid-template-columns:1fr;gap:0}
+  .bm-rs-btn{grid-template-columns:34px minmax(0,1fr);padding:4px 0 4px 12px}
+  .bm-rs-btn:before{top:6px;bottom:6px}
+  .bm-rs-num{font-size:20px}
+  .bm-rs-title{font-size:18px}
+  .bm-rs-text{font-size:13px;margin-top:2px}
+  .bm-rs:not([aria-current]) .bm-rs-text{display:none}
+  .bm-stats b{font-size:22px}
+  .bm-open{min-height:40px;padding:8px 12px;font-size:10px;flex:none}
+  .bm-bottom-row{flex-wrap:nowrap;gap:12px;padding-top:8px}
+  .bm-stats{flex-wrap:nowrap;min-width:0}
+  .bm-stats span{font-size:9px;letter-spacing:.1em;white-space:nowrap}
+  .bm-paper-label{font-size:7px;letter-spacing:.04em}
+}
+/* Short phone screens: only the current step, large, with dots for the others. */
+@media(max-width:760px) and (max-height:740px){
+  .bm-rs:not([aria-current]){display:none}
+  .bm-rs[aria-current="step"]{animation:bm-step-in .45s ease}
+  .bm-rs-btn{padding-left:12px}
+  .bm-rs-title{font-size:22px}
+  .bm-rs-num{font-size:24px}
+  .bm-rs[aria-current] .bm-rs-text{display:block}
+  .bm-dots{display:flex;gap:7px;padding:6px 0 0 58px}
+  .bm-dots i{width:6px;height:6px;border-radius:50%;background:#f4e7cf;opacity:.3;transition:opacity .3s,transform .3s}
+  .bm-dots i.is-on{opacity:1;background:#ed9971;transform:scale(1.25)}
+}
+/* Set by the script when the steps do not fit: first only the current sentence, then only the current step. */
+.bm-tight .bm-rs:not([aria-current]) .bm-rs-text{display:none}
+.bm-tight .bm-route-steps{gap:0}
+.bm-tighter .bm-rs:not([aria-current]){display:none}
+.bm-tighter .bm-rs[aria-current="step"]{animation:bm-step-in .45s ease}
+.bm-tighter .bm-dots{display:flex}
+.bm-dots{gap:7px;padding:8px 0 0 clamp(66px,calc(3.8vw + 20px),94px)}
+.bm-dots i{width:6px;height:6px;border-radius:50%;background:#f4e7cf;opacity:.3;transition:opacity .3s,transform .3s}
+.bm-dots i.is-on{opacity:1;background:#ed9971;transform:scale(1.25)}
+@media(max-width:900px){.bm-dots{padding-left:58px}}
+@keyframes bm-step-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+/* Reduced motion: the route is drawn finished and every step is readable. */
+.bm-reduced .bm-rs,.bm-reduced .bm-rs.is-past{opacity:1;transform:none;animation:none}
+@media(prefers-reduced-motion:reduce){
+  .bm-end{opacity:1}
+  .bm-rs,.bm-rs-btn:before,.bm-badge circle{transition:none}
+  .bm-rs:not([aria-current]){display:list-item}
+  .bm-rs .bm-rs-text{display:block}
+  .bm-dots{display:none}
+}
+@media(prefers-reduced-motion:reduce) and (max-width:900px){
+  .bm-sticky{height:auto;min-height:0}
+  .bm-inner{height:auto;grid-template-rows:auto 60svh auto auto}
 }
