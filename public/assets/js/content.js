@@ -1,4 +1,5 @@
-// Editable content: menu, specials, the page texts and their sizes come from data/content.json.
+// Editable content: menu, specials, the page texts, their sizes and looks and the
+// section colours come from data/content.json.
 // With ?vorschau=<token> the unpublished draft is loaded from /api/vorschau instead.
 // The static markup in index.html is the fallback: if loading fails, nothing is touched.
 // All values are plain text and are written with textContent only.
@@ -48,6 +49,7 @@
     if(content.texts!==undefined&&!isObject(content.texts))throw new Error('bad texts');
     if(content.specials!==undefined&&!Array.isArray(content.specials))throw new Error('bad specials');
     if(content.styles!==undefined&&!isObject(content.styles))throw new Error('bad styles');
+    if(content.sectionStyles!==undefined&&!isObject(content.sectionStyles))throw new Error('bad sectionStyles');
     return content;
   }
 
@@ -156,18 +158,91 @@
     }
   }
 
+  /* ---------- Text looks ---------- */
+  // The same entries may also hold color (#rrggbb), bold / italic (true or false)
+  // and align (left, center, right). They are set inline on the element;
+  // a property that is not stored keeps what the stylesheet says.
+  const HEX=/^#[0-9a-f]{6}$/;
+  const ALIGNS=['left','center','right'];
+  const LOOK_PROPS=['color','font-weight','font-style','text-align'];
+  let looked=[];   // elements that currently carry an inline colour, weight, slant or alignment from here
+
+  function applyLooks(looks){
+    for(const node of looked){
+      for(const prop of LOOK_PROPS)node.style.removeProperty(prop);
+      if(!node.getAttribute('style'))node.removeAttribute('style');
+    }
+    looked=[];
+    for(const [selector,entry] of looks){
+      for(const node of document.querySelectorAll(selector)){
+        if(isText(entry.color)&&HEX.test(entry.color))node.style.color=entry.color;
+        if(typeof entry.bold==='boolean')node.style.fontWeight=entry.bold?'700':'400';
+        if(typeof entry.italic==='boolean')node.style.fontStyle=entry.italic?'italic':'normal';
+        if(ALIGNS.includes(entry.align))node.style.textAlign=entry.align;
+        looked.push(node);
+      }
+    }
+  }
+
   function setStyles(styles){
     scales=[];
+    const looks=[];
     if(isObject(styles)){
       for(const key of Object.keys(styles)){
         const entry=styles[key];
-        const scale=isObject(entry)?entry.scale:null;
-        if(typeof scale!=='number'||!isFinite(scale)||scale===1)continue;
+        if(!isObject(entry))continue;
         const selector=Object.prototype.hasOwnProperty.call(GROUPS,key)?GROUPS[key]:TEXT_KEY.test(key)?'[data-text="'+key+'"]':'';
-        if(selector)scales.push([selector,Math.min(MAX_SCALE,Math.max(MIN_SCALE,scale))]);
+        if(!selector)continue;
+        looks.push([selector,entry]);
+        const scale=entry.scale;
+        if(typeof scale!=='number'||!isFinite(scale)||scale===1)continue;
+        scales.push([selector,Math.min(MAX_SCALE,Math.max(MIN_SCALE,scale))]);
       }
     }
+    applyLooks(looks);
     applyStyles();
+  }
+
+  /* ---------- Section colours ---------- */
+  // content.sectionStyles maps a section to { background, text, accent } (#rrggbb).
+  // Each colour becomes a custom property plus a flag attribute on the element
+  // data-section="<target>" (e.g. --sec-bg and data-sec-bg); the stylesheet
+  // uses them only where the flag is set, so without colours nothing changes.
+  // The menu cards are built by this script, so their colours sit on the menu
+  // section with their own prefix.
+  const SECTIONS={
+    'header':['header','sec'],
+    'hero':['hero','sec'],
+    'marquee':['marquee','sec'],
+    'specials':['specials','sec'],
+    'concept':['concept','sec'],
+    'menu':['menu','sec'],
+    'menu-cards':['menu','card'],
+    'visit':['visit','sec'],
+    'walk':['walk','sec'],
+    'footer':['footer','sec'],
+  };
+  const SECTION_PROPS={background:'bg',text:'text',accent:'accent'};
+
+  function setSectionStyles(sectionStyles){
+    for(const key of Object.keys(SECTIONS)){
+      const [target,prefix]=SECTIONS[key];
+      const node=document.querySelector('[data-section="'+target+'"]');
+      if(!node)continue;
+      const stored=isObject(sectionStyles)&&Object.prototype.hasOwnProperty.call(sectionStyles,key)?sectionStyles[key]:null;
+      const entry=isObject(stored)?stored:{};
+      for(const prop of Object.keys(SECTION_PROPS)){
+        const name=prefix+'-'+SECTION_PROPS[prop];
+        if(isText(entry[prop])&&HEX.test(entry[prop])){
+          node.style.setProperty('--'+name,entry[prop]);
+          node.setAttribute('data-'+name,'');
+        }else{
+          node.style.removeProperty('--'+name);
+          node.removeAttribute('data-'+name);
+        }
+      }
+      if(!node.getAttribute('style'))node.removeAttribute('style');
+    }
   }
 
   // The stylesheet sizes follow the window width, so the scaled sizes are redone after a resize.
@@ -325,7 +400,8 @@
       ['Karte',()=>renderMenu(content.menu)],
       ['Texte',()=>applyTexts(content.texts)],
       ['Specials',()=>renderSpecials(content.specials,images,preview)],
-      // Last: sizes are measured on what the three parts above have put on the page.
+      ['Farben',()=>setSectionStyles(content.sectionStyles)],
+      // Last: sizes are measured on what the parts above have put on the page.
       ['Textgrößen',()=>setStyles(content.styles)],
     ];
     for(const [name,run] of parts){

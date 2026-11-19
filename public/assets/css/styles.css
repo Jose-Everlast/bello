@@ -1449,3 +1449,171 @@ body.is-preview{padding-bottom:46px}
   .bm-sticky{height:auto;min-height:0}
   .bm-inner{height:auto;grid-template-rows:auto 60svh auto auto}
 }
+
+/* ===== Section colours set by the owner (data/content.json "sectionStyles") =====
+   assets/js/content.js puts --sec-bg / --sec-text / --sec-accent and the flag
+   attributes data-sec-bg / data-sec-text / data-sec-accent on the element
+   data-section="<key>" (the menu cards: --card-* and data-card-* on the menu).
+   Every rule below needs its flag, so without stored colours the page is
+   exactly as above. Photos, videos, the hero animation and the street map keep
+   their own colours. Secondary tones (muted text, rules) are mixed from the
+   chosen colour. */
+
+/* Kopfzeile: the bar and the opened phone menu. */
+[data-section="header"][data-sec-bg]{background:var(--sec-bg,#141611)}
+@media(max-width:860px){[data-section="header"][data-sec-bg] .nav{background:var(--sec-bg,#1b1c17)}}
+[data-section="header"][data-sec-text] .brand-word,
+[data-section="header"][data-sec-text] .site-header .nav a:not(.nav-reserve),
+[data-section="header"][data-sec-text] .nav-book,
+[data-section="header"][data-sec-text] .mobile-toggle{color:var(--sec-text)}
+[data-section="header"][data-sec-text] .brand-meta{color:color-mix(in srgb,var(--sec-text) 75%,transparent);border-left-color:color-mix(in srgb,var(--sec-text) 45%,transparent)}
+[data-section="header"][data-sec-text] .nav-book{border-bottom-color:color-mix(in srgb,var(--sec-text) 60%,transparent)}
+[data-section="header"][data-sec-text] .mobile-toggle{border-color:color-mix(in srgb,var(--sec-text) 50%,transparent)}
+[data-section="header"][data-sec-accent] .brand-word span,
+[data-section="header"][data-sec-accent] .nav-book span:not([data-text]),
+[data-section="header"][data-sec-accent] .site-header .nav a:not(.nav-reserve):hover{color:var(--sec-accent)}
+@media(max-width:860px){[data-section="header"][data-sec-accent] .site-header .nav a.nav-reserve{background:var(--sec-accent)}}
+
+/* Ganz oben: only texts and accents; the background is the animation. */
+#hero-scroll[data-section="hero"][data-sec-text] .hero-kicker,
+#hero-scroll[data-section="hero"][data-sec-text] .photo-copy h1,
+#hero-scroll[data-section="hero"][data-sec-text] .photo-copy p,
+#hero-scroll[data-section="hero"][data-sec-text] .photo-stage-label,
+#hero-scroll[data-section="hero"][data-sec-text] #stage-title,
+#hero-scroll[data-section="hero"][data-sec-text] #stage-subtitle,
+#hero-scroll[data-section="hero"][data-sec-text] .hero-progress,
+#hero-scroll[data-section="hero"][data-sec-text] .hero-toast,
+#hero-scroll[data-section="hero"][data-sec-text] .scroll-cue,
+#hero-scroll[data-section="hero"][data-sec-text] .btn-on-dark{color:var(--sec-text)}
+#hero-scroll[data-section="hero"][data-sec-text] .btn-on-dark{border-color:color-mix(in srgb,var(--sec-text) 75%,transparent)}
+#hero-scroll[data-section="hero"][data-sec-accent] .photo-copy h1 em,
+#hero-scroll[data-section="hero"][data-sec-accent] .hero-toast em,
+#hero-scroll[data-section="hero"][data-sec-accent] .hero-progress-steps .active{color:var(--sec-accent)}
+#hero-scroll[data-section="hero"][data-sec-accent] .live-dot{background:var(--sec-accent);box-shadow:0 0 0 5px color-mix(in srgb,var(--sec-accent) 20%,transparent)}
+#hero-scroll[data-section="hero"][data-sec-accent] #mix-progress,
+#hero-scroll[data-section="hero"][data-sec-accent] .hero-toast i{background:var(--sec-accent)}
+
+/* Laufband: the whole band. */
+[data-section="marquee"][data-sec-bg]{background:var(--sec-bg,#e0261c);border-top-color:color-mix(in srgb,var(--sec-bg) 70%,#fff);border-bottom-color:color-mix(in srgb,var(--sec-bg) 70%,#000)}
+[data-section="marquee"][data-sec-text]{color:var(--sec-text,#fff6e8)}
+[data-section="marquee"][data-sec-accent] .mover-inner i{color:var(--sec-accent,#f9bb7e)}
+
+/* Specials: the band around the cards and the light stripes; the cards stay white. */
+[data-section="specials"][data-sec-bg]{background:var(--sec-bg,#fff6e8)}
+[data-section="specials"][data-sec-bg]:before,
+[data-section="specials"][data-sec-accent]:before{background:repeating-linear-gradient(90deg,var(--sec-accent,#e0261c) 0 22px,var(--sec-bg,#fff6e8) 22px 44px)}
+[data-section="specials"][data-sec-text]{color:var(--sec-text,#171813)}
+[data-section="specials"][data-sec-text] .bsp-overline span:not([data-text]){color:color-mix(in srgb,var(--sec-text) 40%,transparent)}
+[data-section="specials"][data-sec-text] .bsp-card{color:#171813}
+[data-section="specials"][data-sec-accent] .bsp-overline,
+[data-section="specials"][data-sec-accent] .bsp-head h2 em{color:var(--sec-accent)}
+[data-section="specials"][data-sec-accent] .bsp-card{border-color:color-mix(in srgb,var(--sec-accent) 20%,transparent);border-bottom-color:var(--sec-accent)}
+[data-section="specials"][data-sec-accent] .bsp-row{scrollbar-color:var(--sec-accent) transparent}
+
+/* Einblicke: around the videos and the lines below them; the videos stay as they are. */
+[data-section="concept"][data-sec-bg]{background:var(--sec-bg,#f3ece0)}
+[data-section="concept"][data-sec-bg] .brj-caption a{color:var(--sec-bg)}
+[data-section="concept"][data-sec-text]{color:var(--sec-text,#1a1a16)}
+[data-section="concept"][data-sec-text] .brj-headline p,
+[data-section="concept"][data-sec-text] .brj-caption p{color:color-mix(in srgb,var(--sec-text) 72%,transparent)}
+[data-section="concept"][data-sec-text] .brj-overline span:not([data-text]){color:color-mix(in srgb,var(--sec-text) 50%,transparent)}
+[data-section="concept"][data-sec-text] .brj-caption{border-top-color:var(--sec-text)}
+[data-section="concept"][data-sec-text] .brj-caption a{background:var(--sec-text)}
+[data-section="concept"][data-sec-accent] .brj-overline,
+[data-section="concept"][data-sec-accent] .brj-headline h2 em,
+[data-section="concept"][data-sec-accent] .brj-caption span,
+[data-section="concept"][data-sec-accent] .brj-bottom>a{color:var(--sec-accent)}
+
+/* Karte: around the menu cards (heading, intro, tabs). */
+[data-section="menu"][data-sec-bg]{background:var(--sec-bg,#1a201b)}
+@media(max-width:760px){[data-section="menu"][data-sec-bg] .brm-tabs{background:var(--sec-bg,#1a201b)}}
+[data-section="menu"][data-sec-bg] .brm-tabs button[aria-selected="true"]{color:var(--sec-bg)}
+[data-section="menu"][data-sec-text]{color:var(--sec-text,#f3eadb)}
+[data-section="menu"][data-sec-text] .brm-intro p{color:color-mix(in srgb,var(--sec-text) 82%,transparent)}
+[data-section="menu"][data-sec-text] .brm-intro strong,
+[data-section="menu"][data-sec-text] .brm-source,
+[data-section="menu"][data-sec-text] .brm-bottom{color:var(--sec-text)}
+[data-section="menu"][data-sec-text] .brm-source{border-color:color-mix(in srgb,var(--sec-text) 45%,transparent)}
+[data-section="menu"][data-sec-text] .brm-tabs button{color:var(--sec-text);border-color:color-mix(in srgb,var(--sec-text) 40%,transparent)}
+[data-section="menu"][data-sec-text] .brm-tabs button:hover,
+[data-section="menu"][data-sec-text] .brm-tabs button[aria-selected="true"]{border-color:var(--sec-text)}
+[data-section="menu"][data-sec-text] .brm-tabs button[aria-selected="true"]{background:var(--sec-text)}
+[data-section="menu"][data-sec-accent] .brm-eyebrow,
+[data-section="menu"][data-sec-accent] .brm-intro h2 em,
+[data-section="menu"][data-sec-accent] .brm-source span:not([data-text]){color:var(--sec-accent)}
+[data-section="menu"][data-sec-accent] .brm-tabs button:focus-visible{outline-color:var(--sec-accent)}
+
+/* Kartenseiten: the pages with the entries (every second one a shade darker). */
+[data-section="menu"][data-card-bg] .brm-panel .brm-page:nth-child(n){background:var(--card-bg,#f5eee1)}
+[data-section="menu"][data-card-bg] .brm-panel .brm-page:nth-child(2){background:color-mix(in srgb,var(--card-bg) 90%,#6b4422)}
+[data-section="menu"][data-card-text] .brm-page{color:var(--card-text,#1d211a)}
+[data-section="menu"][data-card-text] .brm-page li span,
+[data-section="menu"][data-card-text] .brm-page-title p,
+[data-section="menu"][data-card-text] .brm-foot span{color:color-mix(in srgb,var(--card-text) 72%,transparent)}
+[data-section="menu"][data-card-text] .brm-page li i{color:color-mix(in srgb,var(--card-text) 60%,transparent)}
+[data-section="menu"][data-card-text] .brm-folio{border-bottom-color:color-mix(in srgb,var(--card-text) 27%,transparent)}
+[data-section="menu"][data-card-text] .brm-page li{border-bottom-color:color-mix(in srgb,var(--card-text) 13%,transparent)}
+[data-section="menu"][data-card-text] .brm-foot{border-top-color:color-mix(in srgb,var(--card-text) 21%,transparent)}
+[data-section="menu"][data-card-accent] .brm-page:before{background:var(--card-accent,#be4938)}
+[data-section="menu"][data-card-accent] .brm-page li b em,
+[data-section="menu"][data-card-accent] .brm-foot span:last-child,
+[data-section="menu"][data-card-accent] .brm-page-title>span{color:var(--card-accent,#ad4a38)}
+
+/* Besuch: the whole section; the big button and the stamp carry the accent colour. */
+[data-section="visit"][data-sec-bg]{background:radial-gradient(ellipse at 100% 12%,rgba(150,74,46,.12),transparent 42%),var(--sec-bg,#121a16)}
+[data-section="visit"][data-sec-text]{color:var(--sec-text,#f4eee3)}
+[data-section="visit"][data-sec-text] .bv-folio,
+[data-section="visit"][data-sec-text] .bv-copy p,
+[data-section="visit"][data-sec-text] .bv-route-teaser{color:color-mix(in srgb,var(--sec-text) 72%,transparent)}
+[data-section="visit"][data-sec-text] .bv-info small{color:color-mix(in srgb,var(--sec-text) 60%,transparent)}
+[data-section="visit"][data-sec-text] .bv-folio{border-bottom-color:color-mix(in srgb,var(--sec-text) 20%,transparent)}
+[data-section="visit"][data-sec-text] .bv-bottom{border-color:color-mix(in srgb,var(--sec-text) 22%,transparent)}
+[data-section="visit"][data-sec-text] .bv-info+.bv-info{border-color:color-mix(in srgb,var(--sec-text) 14%,transparent)}
+[data-section="visit"][data-sec-text] .bv-info strong a{text-decoration-color:color-mix(in srgb,var(--sec-text) 35%,transparent)}
+[data-section="visit"][data-sec-accent] .bv-eyebrow,
+[data-section="visit"][data-sec-accent] .bv-copy h2 em,
+[data-section="visit"][data-sec-accent] .bv-info>span,
+[data-section="visit"][data-sec-accent] .bv-route-arrow{color:var(--sec-accent)}
+[data-section="visit"][data-sec-accent] .bv-cta{background:var(--sec-accent,#d06b46)}
+[data-section="visit"][data-sec-accent] .bv-cta:hover{background:color-mix(in srgb,var(--sec-accent) 80%,#fff)}
+[data-section="visit"][data-sec-accent] .bv-stamp b{background:var(--sec-accent)}
+[data-section="visit"][data-sec-accent] .bv-stamp-ring{border-color:var(--sec-accent)}
+[data-section="visit"][data-sec-accent] .bv-stamp-ring text{fill:var(--sec-accent)}
+[data-section="visit"][data-sec-accent] .bv-route-line{background:color-mix(in srgb,var(--sec-accent) 30%,transparent)}
+[data-section="visit"][data-sec-accent] .bv-route-line i{background:var(--sec-accent);box-shadow:0 0 12px color-mix(in srgb,var(--sec-accent) 40%,transparent)}
+[data-section="visit"][data-sec-accent] .bv-info strong a:hover{text-decoration-color:var(--sec-accent)}
+
+/* Der Weg: around text, steps and map; the street map keeps its own dark ground. */
+[data-section="walk"][data-sec-bg],
+[data-section="walk"][data-sec-bg] .bm-sticky{background:var(--sec-bg,#162019)}
+[data-section="walk"][data-sec-bg] .bm-sticky:before{opacity:0}
+[data-section="walk"][data-sec-bg] .bm-map-frame{background:#162019}
+[data-section="walk"][data-sec-text]{color:var(--sec-text,#f6eee0)}
+[data-section="walk"][data-sec-text] .bm-title,
+[data-section="walk"][data-sec-text] .bm-rs-title,
+[data-section="walk"][data-sec-text] .bm-stats b,
+[data-section="walk"][data-sec-text] .bm-open{color:var(--sec-text)}
+[data-section="walk"][data-sec-text] .bm-index,
+[data-section="walk"][data-sec-text] .bm-deck,
+[data-section="walk"][data-sec-text] .bm-rs-text,
+[data-section="walk"][data-sec-text] .bm-stats span,
+[data-section="walk"][data-sec-text] .bm-map-caption,
+[data-section="walk"][data-sec-text] .bm-paper-label{color:color-mix(in srgb,var(--sec-text) 75%,transparent)}
+[data-section="walk"][data-sec-text] .bm-open{border-color:color-mix(in srgb,var(--sec-text) 35%,transparent)}
+[data-section="walk"][data-sec-text] .bm-bottom-row{border-top-color:color-mix(in srgb,var(--sec-text) 17%,transparent)}
+[data-section="walk"][data-sec-text] .bm-dots i{background:var(--sec-text)}
+[data-section="walk"][data-sec-accent] .bm-title em,
+[data-section="walk"][data-sec-accent] .bm-rs-num{color:var(--sec-accent)}
+[data-section="walk"][data-sec-accent] .bm-rs-btn:before,
+[data-section="walk"][data-sec-accent] .bm-dots i.is-on{background:var(--sec-accent)}
+[data-section="walk"][data-sec-accent] .bm-rs-btn:focus-visible{outline-color:var(--sec-accent)}
+
+/* Fußzeile: the whole footer. */
+[data-section="footer"][data-sec-bg]{background:var(--sec-bg,#141611)}
+[data-section="footer"][data-sec-text],
+[data-section="footer"][data-sec-text] .footer-brand,
+[data-section="footer"][data-sec-text] .footer-left p a{color:var(--sec-text)}
+[data-section="footer"][data-sec-text] .footer-left>span{color:color-mix(in srgb,var(--sec-text) 80%,transparent)}
+[data-section="footer"][data-sec-text] .footer-left p{color:color-mix(in srgb,var(--sec-text) 68%,transparent)}
+[data-section="footer"][data-sec-accent] .footer-brand span{color:var(--sec-accent)}
+[data-section="footer"][data-sec-accent] a:hover{text-decoration-color:var(--sec-accent)}

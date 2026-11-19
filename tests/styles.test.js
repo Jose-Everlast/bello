@@ -222,9 +222,11 @@ test('the static page shows exactly the wording of content.json (it is the fallb
 
 test('content.json: valid, styles present, nothing over the cap', () => {
   const site = siteContent();
-  // The live file is edited by the bot, so it may carry sizes; it must stay valid.
+  // The live file is edited by the bot, so it may carry sizes, text styles and
+  // section colours; it must stay valid.
   assert.deepEqual(validateContent(site), []);
   assert.equal(typeof site.styles, 'object');
+  if (site.sectionStyles !== undefined) assert.equal(typeof site.sectionStyles, 'object');
 });
 
 test('names: one for every key and group, unique, and the page script knows the same groups', () => {
@@ -393,24 +395,24 @@ test('"mach den Text größer": the bot asks which text, and the short answer co
 test('a look the bot cannot change yet: it says what works today and stores the wish for the developer', async () => {
   const unsupported = { ok: true, intent: 'style_unsupported', reply: 'Klar, mache ich!', forward: false, operations: [bigger('hero.text', 2)] };
   const h = makeHarness({ content: content(), script: [unsupported] });
-  const { reply } = await h.say('mach die Überschrift der Karte rot');
-  assert.equal(reply, 'Bei den Texten der Seite kann ich bisher den Wortlaut und die Größe ändern, z. B. „mach die Überschrift der Karte 50 % größer“. Farbe, Schrift, Position und Abstände kann ich noch nicht ändern. Deinen Wunsch habe ich für Jose notiert. Bitte gib kurz Bescheid, dass dort etwas steht.');
+  const { reply } = await h.say('mach die Überschrift der Karte in Schreibschrift');
+  assert.equal(reply, 'Ich kann Wortlaut, Größe, Farbe, fett, kursiv und Ausrichtung der Texte ändern und Hintergrund-, Text- und Akzentfarbe der Bereiche, z. B. „mach den Hintergrund der Karte creme“. Schriftart, Abstände, Position und Reihenfolge, die Größe von Bildern und Videos und Animationen kann ich noch nicht ändern. Deinen Wunsch habe ich für Jose notiert. Bitte gib kurz Bescheid, dass dort etwas steht.');
   assert.equal(/kann ich nicht (selbst )?ändern/.test(reply), false);
   assert.equal(h.state().draft, null, 'operations of such an answer are ignored');
   assert.equal(h.state().pendingQuestion, null);
   assert.equal(h.state().notes.length, 1);
-  assert.equal(h.state().notes[0].text, 'mach die Überschrift der Karte rot');
-  assert.match((await h.say('notizen')).reply, /mach die Überschrift der Karte rot/);
+  assert.equal(h.state().notes[0].text, 'mach die Überschrift der Karte in Schreibschrift');
+  assert.match((await h.say('notizen')).reply, /mach die Überschrift der Karte in Schreibschrift/);
 
   // With the developer listening in, the reply says so instead.
   const m = makeHarness({ content: content(), mirrorNumber: MIRROR, script: [{ ...unsupported, intent: 'question', reply: 'Hallo!' }, unsupported, unsupported] });
   await m.say('hallo', MIRROR); // opens the developer's 24 h window
-  assert.match((await m.say('die Preise bitte fett')).reply, /kann ich noch nicht ändern\. Deinen Wunsch gebe ich an Jose weiter\.$/);
-  assert.match((await m.say('und kursiv', MIRROR)).reply, /Deinen Wunsch habe ich notiert \(NOTIZEN zeigt die Liste\)\.$/);
+  assert.match((await m.say('die Preise bitte in einer anderen Schrift')).reply, /kann ich noch nicht ändern\. Deinen Wunsch gebe ich an Jose weiter\.$/);
+  assert.match((await m.say('und mit mehr Abstand', MIRROR)).reply, /Deinen Wunsch habe ich notiert \(NOTIZEN zeigt die Liste\)\.$/);
 
   // A size together with such a wish: the size is drafted, the rest is noted.
   const mixed = makeHarness({ content: content(), script: [{ ...headingOps(), forward: true }] });
-  const both = await mixed.say('Überschrift der Karte 50% größer und in rot');
+  const both = await mixed.say('Überschrift der Karte 50% größer und in Schreibschrift');
   assert.ok(both.reply.includes(HEADING_LINES));
   assert.match(both.reply, /Den Rest kann ich nicht selbst ändern\. Ich habe es für Jose notiert/);
   assert.equal(mixed.state().notes.length, 1);

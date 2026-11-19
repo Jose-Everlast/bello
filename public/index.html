@@ -28,7 +28,7 @@
 
 </head>
 <body>
-<div class="header-wrap" id="site-nav-wrap">
+<div class="header-wrap" id="site-nav-wrap" data-section="header">
 <div class="container">
 <header class="site-header">
 <a aria-label="Bello — zurück nach oben" class="brand" href="#top"><span class="brand-word">bello<span>.</span></span><span class="brand-meta"><span data-text="header.tagline1">APERITIVO BAR</span><br/><span data-text="header.tagline2">GÖTTINGEN</span></span></a>
@@ -36,7 +36,7 @@
 <div class="header-actions"><a class="nav-book" href="https://www.instagram.com/bello.aperitivobar/" target="_blank" rel="noopener noreferrer"><span data-text="nav.reserve">Platz anfragen</span> <span aria-hidden="true">↗</span></a><button aria-controls="nav" aria-expanded="false" aria-label="Menü öffnen" class="mobile-toggle" id="mobile-toggle" type="button"><span>☰</span></button></div>
 </header>
 </div>
-</div><main id="top"><section aria-label="Ein Negroni entsteht mit deiner Scrollbewegung" class="hero-scroll" id="hero-scroll">
+</div><main id="top"><section aria-label="Ein Negroni entsteht mit deiner Scrollbewegung" class="hero-scroll" id="hero-scroll" data-section="hero">
 <div class="hero-sticky">
 <div class="hero-scene photo-hero" id="photo-hero">
 <canvas aria-label="Negroni-Animation mit Glas, Eis, langsam ansteigendem Drink und Orange" class="bello-canvas" id="bello-canvas"></canvas>
@@ -55,12 +55,12 @@
 </div>
 </div>
 </section>
-<div aria-hidden="true" class="mover-bar"><div class="mover-inner"><span data-text="marquee.phrase1">APERITIVO IS A STATE OF MIND</span> <i>✳</i> <span data-text="marquee.phrase2">UN PO' DI ITALIA</span> <i>✳</i> <span data-text="marquee.phrase3">BELLO GÖTTINGEN</span> <i>✳</i> <span data-text="marquee.phrase1">APERITIVO IS A STATE OF MIND</span> <i>✳</i> <span data-text="marquee.phrase2">UN PO' DI ITALIA</span> <i>✳</i> <span data-text="marquee.phrase3">BELLO GÖTTINGEN</span> <i>✳</i></div></div>
-<section class="bello-specials" id="specials" aria-labelledby="bsp-title" hidden>
+<div aria-hidden="true" class="mover-bar" data-section="marquee"><div class="mover-inner"><span data-text="marquee.phrase1">APERITIVO IS A STATE OF MIND</span> <i>✳</i> <span data-text="marquee.phrase2">UN PO' DI ITALIA</span> <i>✳</i> <span data-text="marquee.phrase3">BELLO GÖTTINGEN</span> <i>✳</i> <span data-text="marquee.phrase1">APERITIVO IS A STATE OF MIND</span> <i>✳</i> <span data-text="marquee.phrase2">UN PO' DI ITALIA</span> <i>✳</i> <span data-text="marquee.phrase3">BELLO GÖTTINGEN</span> <i>✳</i></div></div>
+<section class="bello-specials" id="specials" data-section="specials" aria-labelledby="bsp-title" hidden>
 <div class="bsp-head"><div class="bsp-overline"><span data-text="specials.eyebrow1">SPECIALS</span> <span>—</span> <span data-text="specials.eyebrow2">NUR FÜR KURZE ZEIT</span></div><h2 id="bsp-title"><span data-text="specials.heading1">Solo</span> <em data-text="specials.heading2">adesso.</em></h2></div>
 <div class="bsp-row" id="bsp-row"></div>
 </section>
-<section class="bello-real-journal" id="concept" aria-labelledby="brj-title">
+<section class="bello-real-journal" id="concept" data-section="concept" aria-labelledby="brj-title">
   <div class="brj-head"><div class="brj-overline"><span data-text="concept.eyebrow1">01 / EINBLICKE</span> <span>—</span> <span data-text="concept.eyebrow2">BELLO · GÖTTINGEN</span></div><div class="brj-headline"><h2 id="brj-title"><span data-text="concept.heading1">Behind</span><br><em data-text="concept.heading2">the lines.</em></h2><p data-text="concept.text">Bello in 15 Sekunden – und dazu zwei Reels aus unserem Instagram.</p></div></div>
   <div class="brj-track" id="brj-track" aria-label="Bello Videogalerie" role="region" aria-roledescription="Karussell" tabindex="0">
     <article class="brj-item"><div class="brj-media"><video src="assets/video/bello-info.mp4" poster="assets/images/bello-info-poster.jpg" autoplay loop muted playsinline preload="metadata" aria-label="Bello in Kürze: Angebot, Adresse Kurze Str. 6A, 37073 Göttingen und Öffnungszeiten" ></video><span class="brj-number">01 — 03</span><span class="brj-vertical" data-text="concept.card1.side">BELLO · AUF EINEN BLICK</span></div><div class="brj-caption"><div><span data-text="concept.card1.eyebrow">WO · WANN · WAS</span><h3 data-text="concept.card1.title">Bello in 15 Sekunden.</h3><p data-text-list="visit.address visit.hours1 visit.hours2 visit.closed" data-text-end=".">Kurze Str. 6A, 37073 Göttingen · Di–Sa 14:30–00:00 · So 14:00–22:00 · Montag Ruhetag.</p></div><a href="#visit" aria-label="Zum Abschnitt Besuch">↗</a></div></article>
@@ -69,7 +69,7 @@
   </div>
   <div class="brj-bottom"><span data-text="concept.swipe">← WISCHEN →</span><div class="brj-controls"><button type="button" id="brj-prev" aria-label="Vorheriges Video">←</button><output id="brj-count" aria-live="polite">01 / 03</output><button type="button" id="brj-next" aria-label="Nächstes Video">→</button></div><a href="https://www.instagram.com/bello.aperitivobar/" rel="noopener noreferrer" target="_blank" data-text="concept.instagram">Zu unserem Instagram ↗</a></div>
 </section>
-<section class="bello-real-menu" id="menu" aria-labelledby="brm-title">
+<section class="bello-real-menu" id="menu" data-section="menu" aria-labelledby="brm-title">
 <div class="brm-top"><div class="brm-eyebrow" data-text="menu.eyebrow">02 / LA CARTA</div><div class="brm-intro"><h2 id="brm-title"><span data-text="menu.heading1">La</span> <em data-text="menu.heading2">carta.</em></h2><p><strong data-text="menu.intro.bold">Mangiare, Focaccia, Aperitivo, Negronis und Cocktails.</strong> <span data-text="menu.intro.text">Das ist unsere Karte. Es gilt immer die Karte bei uns vor Ort.</span></p></div><a href="https://www.instagram.com/p/DfFCSybjYvJ/?img_index=7" target="_blank" rel="noopener noreferrer" class="brm-source"><span data-text="menu.source">Unsere Karte auf Instagram</span> <span aria-hidden="true">↗</span></a></div>
 <div class="brm-tabs" role="tablist" aria-label="Karte nach Bereich"><button type="button" role="tab" id="brm-tab-snacks" aria-controls="brm-panel-snacks" aria-selected="false" tabindex="-1">Snacks</button><button type="button" role="tab" id="brm-tab-cocktails" aria-controls="brm-panel-cocktails" aria-selected="true">Cocktails</button><button type="button" role="tab" id="brm-tab-getraenke" aria-controls="brm-panel-getraenke" aria-selected="false" tabindex="-1">Getränke</button></div>
 <div class="brm-panel" role="tabpanel" id="brm-panel-snacks" aria-labelledby="brm-tab-snacks" hidden><article class="brm-page"><div class="brm-folio"><span data-text="menu.folio">LA CARTA</span><span>Snacks</span></div><div class="brm-page-title"><h3>Mangiare</h3><p>Kleinigkeiten zum Teilen</p></div><ul><li><b>Aperitivo-Platte<em>5 €</em></b><span>Kichererbsencreme · Focaccia · Oliven · Tagesspezial</span><i>Aperitivo wie in Italien.</i></li>
@@ -106,7 +106,7 @@
 <li><b>Espresso / Cappuccino<em>3,50 € / 4,50 €</em></b></li>
 <li><b>Espresso al Banco<em>2 €</em></b><span>Espresso an der Theke wie in Italien</span><i>Shot and go.</i></li></ul><div class="brm-foot"><span data-text="menu.foot">Preise in Euro inkl. MwSt.</span><span>bello.</span></div></article></div>
 </section>
-<section aria-labelledby="invite-heading" class="bello-invite" id="visit">
+<section aria-labelledby="invite-heading" class="bello-invite" id="visit" data-section="visit">
 <div class="bv-wrap">
 <div class="bv-folio"><span data-text="visit.folio1">03 / VIENI A TROVARCI</span><span data-text="visit.folio2">GÖTTINGEN · INNENSTADT</span></div>
 <div class="bv-main">
@@ -117,7 +117,7 @@
 <div class="bv-route-teaser" aria-hidden="true"><span data-text="visit.route.from">DAL KORNMARKT</span><span class="bv-route-line"><i></i></span><span data-text="visit.route.to">AL BELLO</span><span class="bv-route-arrow">↘</span></div>
 </div>
 </section>
-<section class="bello-map-scroll" id="bello-walk" aria-labelledby="bm-title">
+<section class="bello-map-scroll" id="bello-walk" data-section="walk" aria-labelledby="bm-title">
   <div class="bm-sticky">
     <div class="bm-grain" aria-hidden="true"></div>
     <div class="bm-inner">
@@ -186,7 +186,7 @@
     </div>
   </div>
 </section>
-<footer class="bello-footer"><div class="footer-left"><span data-text="footer.title">BELLO · APERITIVO BAR</span><p><span data-text="visit.address">Kurze Str. 6A, 37073 Göttingen</span><br/><span data-text="visit.hours1">Di–Sa 14:30–00:00</span> · <span data-text="visit.hours2">So 14:00–22:00</span> · <span data-text="visit.closed">Montag Ruhetag</span><br/><a href="https://www.instagram.com/bello.aperitivobar/" target="_blank" rel="noopener noreferrer" data-text="footer.instagram">Instagram: @bello.aperitivobar</a></p></div><a aria-label="Zurück nach oben" class="footer-brand" href="#top">bello<span>.</span></a><a class="footer-back" href="#top" data-text="footer.back">NACH OBEN ↑</a></footer>
+<footer class="bello-footer" data-section="footer"><div class="footer-left"><span data-text="footer.title">BELLO · APERITIVO BAR</span><p><span data-text="visit.address">Kurze Str. 6A, 37073 Göttingen</span><br/><span data-text="visit.hours1">Di–Sa 14:30–00:00</span> · <span data-text="visit.hours2">So 14:00–22:00</span> · <span data-text="visit.closed">Montag Ruhetag</span><br/><a href="https://www.instagram.com/bello.aperitivobar/" target="_blank" rel="noopener noreferrer" data-text="footer.instagram">Instagram: @bello.aperitivobar</a></p></div><a aria-label="Zurück nach oben" class="footer-brand" href="#top">bello<span>.</span></a><a class="footer-back" href="#top" data-text="footer.back">NACH OBEN ↑</a></footer>
 </main>
 <script src="assets/js/script-01.js"></script>
 <script src="assets/js/script-03.js"></script>
